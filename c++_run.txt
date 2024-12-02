@@ -1,0 +1,6 @@
+Compile the C++ program using g++:
+--> g++ hello.cpp -o hello
+
+
+Run the compiled program:
+--> ./hello
