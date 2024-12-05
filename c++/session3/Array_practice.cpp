@@ -1,32 +1,33 @@
-// C++ program to read array of size n and find the frequency of the given element
+// #1 C++ program to read array of size n and find the frequency of the given element
 
-// # include<iostream>
-// using namespace std;
+/*
+# include<iostream>
+using namespace std;
 
-// int main(){
-//   int n, i, x, count = 0;
-//   cout << "Enter the size of the array: ";
-//   cin >> n;
+int main(){
+  int n, i, x, count = 0;
+  cout << "Enter the size of the array: ";
+  cin >> n;
   
-//   int arr[n];
-//   cout << "Enter the elements of the array: ";
+  int arr[n];
+  cout << "Enter the elements of the array: ";
   
-//   for(i = 0; i < n; i++){
-//     cin >> arr[i];
-//   }
+  for(i = 0; i < n; i++){
+    cin >> arr[i];
+  }
   
-//   cout << "Enter the element to find its frequency: ";
-//   cin >> x;
+  cout << "Enter the element to find its frequency: ";
+  cin >> x;
 
-//   for(i = 0; i < n; i++){
-//     if(arr[i] == x){
-//       count++;
-//     }
-//   }
-//   cout << "Frequency of " << x << " is " << count << endl;
-//   return 0;
-// }
-
+  for(i = 0; i < n; i++){
+    if(arr[i] == x){
+      count++;
+    }
+  }
+  cout << "Frequency of " << x << " is " << count << endl;
+  return 0;
+}
+*/
 
 // +++++++++++++ outptu ++++++++++++++++++
 // PS J:\My Drive\DSA-WORDSPACE\c++\session3> g++ .\Array_practice.cpp -o Array_practice  
@@ -47,8 +48,9 @@
 
 // -----------------------------------------------
 
-// C++ program to read array of size n and find the frequency of all element
+// #2 C++ program to read array of size n and find the frequency of all element
 
+/*
 #include<iostream>
 using namespace std;
 
@@ -74,7 +76,7 @@ int main(){
   }
   return 0;
 }
-
+*/
 
 
 // +++++++++++++ output ++++++++++++++++++++++
@@ -121,4 +123,56 @@ int main(){
 // 0 Frequency of 0 is 2
 // 3 Frequency of 3 is 1
 // 0 Frequency of 0 is 2
+// PS J:\My Drive\DSA-WORDSPACE\c++\session3>
+
+
+
+// ------------ #3 question ------------------------
+// Write a C++ program to find the maximum and minimum element in an array of integers.
+
+#include<iostream>
+using namespace std;
+
+int main(){
+  int n;
+  cout << "Enter the size of the array: ";
+  cin >> n;
+
+  int arr[n];
+  cout << "Enter the elements of the array: ";
+
+  for(int i=0; i < n; i++){
+    cin >> arr[i];
+  }
+
+  int max = arr[0];
+  int min = arr[0];
+
+  for(int i=1; i < n; i++){
+    if(arr[i] > max){
+      max = arr[i];
+    }
+    if(arr[i] < min){
+      min = arr[i];
+    }
+  }
+
+  cout << "Maximum element in the array is: " << max << endl;
+  cout << "Minimum element in the array is: " << min << endl;
+  return 0;
+}
+
+
+// ++++++++++++++++ output +++++++++++++++++++
+// PS J:\My Drive\DSA-WORDSPACE\c++\session3> g++ .\Array_practice.cpp -o Array_practice
+// PS J:\My Drive\DSA-WORDSPACE\c++\session3> ./Array_practice
+// Enter the size of the array: 6
+// Enter the elements of the array: 99
+// 2
+// 6
+// 88
+// 44
+// 1
+// Maximum element in the array is: 99
+// Minimum element in the array is: 1
 // PS J:\My Drive\DSA-WORDSPACE\c++\session3>
