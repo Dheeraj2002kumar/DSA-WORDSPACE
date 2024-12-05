@@ -130,6 +130,7 @@ int main(){
 // ------------ #3 question ------------------------
 // Write a C++ program to find the maximum and minimum element in an array of integers.
 
+/*
 #include<iostream>
 using namespace std;
 
@@ -161,7 +162,7 @@ int main(){
   cout << "Minimum element in the array is: " << min << endl;
   return 0;
 }
-
+*/
 
 // ++++++++++++++++ output +++++++++++++++++++
 // PS J:\My Drive\DSA-WORDSPACE\c++\session3> g++ .\Array_practice.cpp -o Array_practice
@@ -176,3 +177,80 @@ int main(){
 // Maximum element in the array is: 99
 // Minimum element in the array is: 1
 // PS J:\My Drive\DSA-WORDSPACE\c++\session3>
+
+
+
+// ------------------- #4 -----------------------
+// #4 Write C++ program to find the array type (even, odd or mixed)
+
+#include<iostream>
+using namespace std;
+
+int main(){
+  int n;
+  cout << "Enter the size of the array: ";
+  cin >> n;
+
+  int arr[n];
+  cout << "Enter the elements of the array: ";
+  for(int i=0; i < n; i++){
+    cin >> arr[i];
+  }
+
+  // ++++++++++++++++ code +++++++++++++++++++
+  int count_even = 0;
+  int count_odd = 0;
+  for(int i=0; i < n; i++){
+    if(arr[i] % 2 == 0){
+      count_even++;
+    }
+    else{
+      count_odd++;
+    }
+  }
+
+  // ++++++++++++++++ code +++++++++++++++++++
+
+  if(count_even == n){
+    cout << "Array type is: even" << endl;
+  }else {
+    if(count_odd == n){
+      cout << "Array type is: odd" << endl;
+      }else{
+        cout << "Array type is: mixed" << endl;
+    }
+  }
+
+  return 0;
+}
+
+
+// ++++++++++++++++ output +++++++++++++++++
+
+// PS J:\My Drive\DSA-WORDSPACE\c++\session3> g++ .\Array_practice.cpp -o Array_practice
+// PS J:\My Drive\DSA-WORDSPACE\c++\session3> ./Array_practice
+// Enter the size of the array: 5
+// Enter the elements of the array: 5
+// 5
+// 5
+// 7
+// 7
+// Array type is: odd
+// PS J:\My Drive\DSA-WORDSPACE\c++\session3> g++ .\Array_practice.cpp -o Array_practice
+// PS J:\My Drive\DSA-WORDSPACE\c++\session3> ./Array_practice
+// Enter the size of the array: 4
+// Enter the elements of the array: 2
+// 2
+// 4
+// 4
+// Array type is: even
+// PS J:\My Drive\DSA-WORDSPACE\c++\session3> g++ .\Array_practice.cpp -o Array_practice  
+// PS J:\My Drive\DSA-WORDSPACE\c++\session3> ./Array_practice
+// Enter the size of the array: 3
+// Enter the elements of the array: 1
+// 2
+// 3
+// Array type is: mixed
+// PS J:\My Drive\DSA-WORDSPACE\c++\session3>
+
+
