@@ -95,6 +95,38 @@ int main(){
 
 // -------------------------------------------------------
 
+/*
+The code I provided implements a simple queue using a linked list. This type of queue is a basic data structure that follows the First In, First Out (FIFO) principle, meaning that the first element added to the queue will be the first one to be removed.
+
+Characteristics of the Queue in the Code:
+Linked List Implementation:
+
+The queue is implemented using a linked list, where each node contains data and a pointer to the next node. This allows for dynamic memory allocation, meaning the queue can grow and shrink as needed without a predefined size limit.
+Basic Operations:
+
+Enqueue: Adds an element to the rear of the queue.
+Dequeue: Removes an element from the front of the queue.
+Display: Shows the current elements in the queue.
+Dynamic Size:
+
+Unlike an array-based implementation of a queue, which has a fixed size, the linked list implementation can grow and shrink dynamically based on the number of elements.
+Types of Queues:
+While the provided code implements a basic queue, there are several other types of queues in computer science, including:
+
+Circular Queue: A queue where the last position is connected back to the first position to make a circle. This is often implemented using arrays.
+
+Priority Queue: A special type of queue where each element has a priority. Elements with higher priority are dequeued before elements with lower priority.
+
+Double-Ended Queue (Deque): A queue where elements can be added or removed from both the front and the rear.
+
+Blocking Queue: A type of queue that supports operations that wait for the queue to become non-empty when dequeuing and wait for space to become available when enqueueing.
+
+Concurrent Queue: A queue designed for use in multi-threaded environments, allowing safe access from multiple threads.
+
+The code provided is a straightforward implementation of a basic FIFO queue using a linked list, which is suitable for many applications where simple queue operations are needed.
+*/
+
+/*
 #include <iostream>
 
 using namespace std;
@@ -200,7 +232,7 @@ int main() {
 
     return 0;
 }
-
+*/
 
 // +++++++++++++++++ output ++++++++++++++++++++++++
 
@@ -223,3 +255,117 @@ int main() {
 // PS J:\My Drive\DSA-WORDSPACE\c++\session4>
 
 
+
+
+
+
+//  -----------------------------------------------------
+
+/*
+Explanation:
+Array Implementation: The queue is implemented using a fixed-size array (arr[MAX]), where MAX defines the maximum number of elements the queue can hold.
+
+Front and Rear Pointers:
+
+front: Points to the index of the front element in the queue.
+rear: Points to the index of the last element in the queue.
+Basic Operations:
+
+Enqueue: Adds an element to the rear of the queue. If the queue is full, it displays a message indicating that the enqueue operation cannot be performed.
+Dequeue: Removes an element from the front of the queue. If the queue is empty, it displays a message indicating that the dequeue operation cannot be performed.
+Display: Shows the current elements in the queue.
+Queue Full and Empty Checks: The program includes checks to determine if the queue is full or empty before performing enqueue and dequeue operations.
+*/
+
+
+#include <iostream>
+using namespace std;
+
+#define MAX 100 // Maximum size of the queue
+
+class Queue {
+private:
+    int arr[MAX]; // Array to store queue elements
+    int front;    // Index of the front element
+    int rear;     // Index of the rear element
+
+public:
+    // Constructor to initialize the queue
+    Queue() {
+        front = -1;
+        rear = -1;
+    }
+
+    // Function to check if the queue is empty
+    bool isEmpty() {
+        return front == -1;
+    }
+
+    // Function to check if the queue is full
+    bool isFull() {
+        return rear == MAX - 1;
+    }
+
+    // Function to add an element to the queue
+    void enqueue(int value) {
+        if (isFull()) {
+            cout << "Queue is full. Cannot enqueue " << value << "." << endl;
+            return;
+        }
+        if (isEmpty()) {
+            front = 0; // Set front to 0 if the queue was empty
+        }
+        rear++;
+        arr[rear] = value; // Add the new element at the rear
+        cout << value << " enqueued to the queue." << endl;
+    }
+
+    // Function to remove an element from the queue
+    int dequeue() {
+        if (isEmpty()) {
+            cout << "Queue is empty. Cannot dequeue." << endl;
+            return -1; // Indicate that the queue is empty
+        }
+        int value = arr[front]; // Get the front element
+        if (front >= rear) {
+            front = -1; // Reset the queue if it becomes empty
+            rear = -1;
+        } else {
+            front++; // Move front to the next element
+        }
+        cout << value << " dequeued from the queue." << endl;
+        return value;
+    }
+
+    // Function to display the queue
+    void display() {
+        if (isEmpty()) {
+            cout << "Queue is empty." << endl;
+            return;
+        }
+        cout << "Queue elements: ";
+        for (int i = front; i <= rear; i++) {
+            cout << arr[i] << " ";
+        }
+        cout << endl;
+    }
+};
+
+// Main function to demonstrate queue operations
+int main() {
+    Queue q;
+
+    q.enqueue(10);
+    q.enqueue(20);
+    q.enqueue(30);
+    q.display();
+
+    q.dequeue();
+    q.display();
+
+    q.dequeue();
+    q.dequeue();
+    q.dequeue(); // Attempt to dequeue from an empty queue
+
+    return 0;
+}
