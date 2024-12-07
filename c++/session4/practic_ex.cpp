@@ -63,3 +63,10 @@ int main() {
 
     return 0;
 }
+
+// ++++++++++++++ output ++++++++++++++++++
+
+// PS J:\My Drive\DSA-WORDSPACE\c++\session4> g++ practic_ex.cpp -o practice_ex
+// PS J:\My Drive\DSA-WORDSPACE\c++\session4> ./practice_ex
+// Arrays are equal.
+// PS J:\My Drive\DSA-WORDSPACE\c++\session4>
