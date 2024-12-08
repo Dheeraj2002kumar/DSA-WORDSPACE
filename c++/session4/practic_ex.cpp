@@ -70,3 +70,8 @@ int main() {
 // PS J:\My Drive\DSA-WORDSPACE\c++\session4> ./practice_ex
 // Arrays are equal.
 // PS J:\My Drive\DSA-WORDSPACE\c++\session4>
+
+
+
+// -----------------------------------------------------------------
+// 3. Write program to find Triplets with a given sum.
