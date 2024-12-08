@@ -132,3 +132,12 @@ int main(){
 }
 
 
+// +++++++++++++++++++ output +++++++++++++++++++
+// PS J:\My Drive\DSA-WORDSPACE\c++\Session5> g++ queue.cpp -o queue
+// PS J:\My Drive\DSA-WORDSPACE\c++\Session5> ./queue
+
+// Insert element at rear end
+// Rear Elements 20
+// Rear element: 10
+// Front elementsDeque is empty (UNDERFLOW CONDITION)-1
+// PS J:\My Drive\DSA-WORDSPACE\c++\Session5> 
