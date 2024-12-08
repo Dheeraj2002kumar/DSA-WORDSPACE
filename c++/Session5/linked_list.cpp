@@ -43,3 +43,16 @@ int main(){
 
     return 0;
 }
+
+
+// ++++++++++++++++++ output +++++++++++++++++++
+// PS J:\My Drive\DSA-WORDSPACE\c++\Session5> g++ linked_list.cpp -o linked_list
+// PS J:\My Drive\DSA-WORDSPACE\c++\Session5> ./linked_list
+
+// Elements 10
+
+// Elements 20
+
+// Elements 30
+// PS J:\My Drive\DSA-WORDSPACE\c++\Session5>
+
