@@ -76,3 +76,20 @@ int main(){
     cout << "\nThe sum of elements is = " << sum; 
     return 0;
 }
+
+
+// ++++++++++++++++ output +++++++++++++++
+// PS J:\My Drive\DSA-WORDSPACE\c++\Session6> g++ practice.cpp -o practice
+// PS J:\My Drive\DSA-WORDSPACE\c++\Session6> ./practice
+
+// Enter the size of array 6
+
+// Enter the elements of array 99
+// 4
+// 33
+// -1
+// 39
+// -55
+
+// The sum of elements is = 119
+// PS J:\My Drive\DSA-WORDSPACE\c++\Session6> 
