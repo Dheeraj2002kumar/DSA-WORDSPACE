@@ -28,3 +28,20 @@ int main(){
     cout << "\nThe largest element is = " << large;
     return 0;
 }
+
+
+// ++++++++++++ output ++++++++++++++++++++
+
+// PS J:\My Drive\DSA-WORDSPACE\c++\Session6> g++ practice.cpp -o practice
+// PS J:\My Drive\DSA-WORDSPACE\c++\Session6> ./practice
+
+// Enter the size of array 5
+
+// Enter the element of array 3
+// 9
+// 88
+// 5
+// -1
+
+// The smallest element is = -1
+// The largest element is = 88
