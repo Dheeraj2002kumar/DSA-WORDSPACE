@@ -1,5 +1,6 @@
 // c++ program to find smallest and largest element in array
 
+/*
 #include<iostream>
 using namespace std;
 
@@ -28,7 +29,7 @@ int main(){
     cout << "\nThe largest element is = " << large;
     return 0;
 }
-
+*/
 
 // ++++++++++++ output ++++++++++++++++++++
 
@@ -45,3 +46,33 @@ int main(){
 
 // The smallest element is = -1
 // The largest element is = 88
+
+
+
+// --------------------------------------------------------
+
+// c++ program to find sum of element in array
+
+#include<iostream>
+using namespace std;
+
+int main(){
+    int n;
+    cout << "\nEnter the size of array ";
+    cin >> n;
+
+    int arr[n];
+    int i, sum = 0;
+
+    cout << "\nEnter the elements of array ";
+    for(i = 0; i < n; i++){
+        cin >> arr[i];
+    }
+
+    for(i = 0; i < n; i++){
+        sum += arr[i];
+    }
+
+    cout << "\nThe sum of elements is = " << sum; 
+    return 0;
+}
