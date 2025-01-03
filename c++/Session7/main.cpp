@@ -1,3 +1,4 @@
+/*
 #include <iostream>
 using namespace std;
 
@@ -59,7 +60,7 @@ int main(){
 
     return 0;
 }
-
+*/
 
 // --------------- Output ---------------------
 // PS C:\Users\hp\Desktop\TCS IT\DSA-WORDSPACE\c++\Session7> g++ main.cpp -o main
@@ -73,3 +74,52 @@ int main(){
 // 5 -> 30 -> 12 -> 9 -> 1 ->
 
 
+
+
+
+// ++++++++++++++++++++++ Binary Search Tree +++++++++++++++++++++++++++++
+
+#include <iostream>
+using namespace std;
+
+struct Node{
+    int data;
+    struct Node *left;
+    struct Node *right;
+};
+
+struct Node *newNode(int data){
+    struct Node *node = (struct Node *)malloc(sizeof(struct Node));
+
+    node->data = data;
+    node->left = NULL;
+    node->right = NULL;
+    return node;
+}
+
+void inorder(struct Node *root){
+    if(root != NULL){
+        inorder(root->left);
+        cout << root->data << " -> ";
+        inorder(root->right);
+    }
+}
+
+int main(){
+    struct Node* root = newNode(10);
+    root->left = newNode(5);
+    root->right = newNode(15);
+    root->left->left = newNode(2);
+    root->left->right = newNode(7);
+
+    cout << "\n Inorder traversal of binary tree is \n";
+    inorder(root);
+    return 0;
+}
+
+// --------------- Output ---------------------
+// PS C:\Users\hp\Desktop\TCS IT\DSA-WORDSPACE\c++\Session7> g++ main.cpp -o main
+// PS C:\Users\hp\Desktop\TCS IT\DSA-WORDSPACE\c++\Session7> ./main
+
+//  Inorder traversal of binary tree is 
+// 2 -> 5 -> 7 -> 10 -> 15 ->
