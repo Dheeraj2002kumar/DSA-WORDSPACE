@@ -148,3 +148,8 @@ int main(){
     return 0;
 }
 
+// ---------- output ----------------
+
+// PS C:\Users\hp\Desktop\TCS IT\DSA-WORDSPACE\c++\session8> g++ main.cpp -o main
+// PS C:\Users\hp\Desktop\TCS IT\DSA-WORDSPACE\c++\session8> ./main
+// The tree is a perfect binary tree
