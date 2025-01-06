@@ -129,7 +129,7 @@ int main(){
 
 
 // ++++++++++++ full binary tree +++++++++++++++++
-
+/*
 #include <iostream>
 
 // Definition of a Node in the binary tree
@@ -232,6 +232,7 @@ int main() {
     return 0;
 }
 
+*/
 // ------------------ output ----------------------
 
 // PS C:\Users\hp\Desktop\TCS IT\DSA-WORDSPACE\c++\Session7> g++ main.cpp -o main
