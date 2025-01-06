@@ -61,3 +61,12 @@ int main(){
 
     return 0;
 }
+
+
+
+// ------------- Output ------------------------
+
+// PS C:\Users\hp\Desktop\TCS IT\DSA-WORDSPACE\c++\session8> g++ main.cpp -o main
+// PS C:\Users\hp\Desktop\TCS IT\DSA-WORDSPACE\c++\session8> ./main              
+
+// tree is not perfect binary tree
