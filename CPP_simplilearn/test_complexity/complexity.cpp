@@ -475,50 +475,51 @@ The space complexity of Bubble Sort is O(1) since it sorts the array in place wi
 // Small data set = okay
 // Large data set = Bad
 
-#include<iostream>
-using namespace std;
+// #include<iostream>
+// using namespace std;
+// #include <algorithm>
 
-// Function to perform Selection Sort
-void selectionSort(int arr[], int n){
-    for (int i = 0; i < n-1; i++){
-        int minIndex = i;
+// // Function to perform Selection Sort
+// void selectionSort(int arr[], int n){
+//     for (int i = 0; i < n-1; i++){
+//         int minIndex = i;
 
-        // Find the minimum element in the unsorted part of the array
-        for (int j = i+1; j < n; j++){
-            if (arr[j] < arr[minIndex]){
-                minIndex = j;
-            }
-        }
+//         // Find the minimum element in the unsorted part of the array
+//         for (int j = i+1; j < n; j++){
+//             if (arr[j] < arr[minIndex]){
+//                 minIndex = j;
+//             }
+//         }
 
-        // Swap the found minimum element with the first element
-        int temp = arr[minIndex];
-        arr[minIndex] = arr[i];
-        arr[i] = temp;
-    }
-}
+//         // Swap the found minimum element with the first element
+//         int temp = arr[minIndex];
+//         arr[minIndex] = arr[i];
+//         arr[i] = temp;
+//     }
+// }
 
-// Function to print an array
-void printArray(int arr[], int size){
-    for (int i = 0; i < size; i++){
-        cout << arr[i] << " ";
-    }
-    cout << endl;
-}
+// // Function to print an array
+// void printArray(int arr[], int size){
+//     for (int i = 0; i < size; i++){
+//         cout << arr[i] << " ";
+//     }
+//     cout << endl;
+// }
 
-int main(){
-    int arr[] = {64, 25, 12, 22, 11};
-    int n = sizeof(arr) / sizeof(arr[0]);
+// int main(){
+//     int arr[] = {64, 25, 12, 22, 11};
+//     int n = sizeof(arr) / sizeof(arr[0]);
 
-    cout << "Original array: ";
-    printArray(arr, n);
+//     cout << "Original array: ";
+//     printArray(arr, n);
 
-    selectionSort(arr, n);
+//     selectionSort(arr, n);
 
-    cout << "Sorted array: ";
-    printArray(arr, n);
+//     cout << "Sorted array: ";
+//     printArray(arr, n);
 
-    return 0;
-}
+//     return 0;
+// }
 
 
 
@@ -553,5 +554,106 @@ The time complexity of Selection Sort is O(n^2) in all cases (best, average, and
 
 Space Complexity:
 The space complexity of Selection Sort is O(1) since it sorts the array in place without using any additional memory.
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ++++++++++++++++++ Counting Sort +++++++++++++++++++++
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+// Fuction to perform Counting Sort
+void countingSort(vector<int> & arr, int n){
+    // Find the maximum element in the array 
+    int max_val = arr[0];
+    for(int i = 1; i < n; i++){
+        if (arr[i] > max_val){
+            max_val = arr[i];
+        }
+    }
+
+    // Initialize a count array with zeros
+    vector<int> count(max_val + 1, 0);
+
+    // Store the count of each element in the count array
+    for (int i = 0; i < n; i++){
+        count[arr[i]]++;
+    }
+
+    // Store the sorted elements back into the original array
+    int index = 0;
+    for (int i = 0; i <= max_val; i++){
+        while(count[i] > 0){
+            arr[index++] = i;
+            count[i]--;
+        }
+    }
+}
+
+// Function to print an array
+void printArray(const vector<int>& arr){
+    for (int i = 0; i < arr.size(); i++){
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+}
+
+int main(){
+    vector<int> arr  = {4, 2, 2, 8, 3, 3, 1};
+    int n = arr.size();
+
+    cout << "Original Array: ";
+    printArray(arr);
+
+    countingSort(arr, n);
+
+    cout << "Sorted Array: ";
+    printArray(arr);
+
+    return 0;
+}
+
+
+
+
+/*
+
+Explanation:
+Counting Sort Function:
+
+The countingSort function takes a vector<int> and its size as input.
+
+It first finds the maximum element in the array to determine the range of the count array.
+
+It initializes a count array with zeros and stores the count of each element in the array.
+
+It places the sorted elements back into the original array by iterating through the count array.
+
+Print Array Function:
+
+The printArray function prints the elements of the array using a loop.
+
+Main Function:
+
+The main function initializes a vector<int> with the array values.
+
+It prints the original array.
+
+It calls the countingSort function to sort the array.
+
+It prints the sorted array.
 
 */
