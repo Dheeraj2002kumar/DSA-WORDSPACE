@@ -102,97 +102,97 @@
 
 // -------------------- Merge sort -----------------------
 
-#include<iostream>
-using namespace std;
+// #include<iostream>
+// using namespace std;
 
-// Function to merge two subarrays
-void merge(int arr[], int left, int mid, int right){
-    int n1 = mid - left + 1;
-    int n2 = right - mid;
+// // Function to merge two subarrays
+// void merge(int arr[], int left, int mid, int right){
+//     int n1 = mid - left + 1;
+//     int n2 = right - mid;
 
-    // Create temporary arrays
-    int L[n1], R[n2];
+//     // Create temporary arrays
+//     int L[n1], R[n2];
 
-    // Copy data to temporary arrays
-    for (int i = 0; i < n1; i++){
-        L[i] = arr[left + i];
-    }
+//     // Copy data to temporary arrays
+//     for (int i = 0; i < n1; i++){
+//         L[i] = arr[left + i];
+//     }
 
-    for (int j = 0; j < n2; j++){
-        R[j] = arr[mid + 1 + j];
-    }
+//     for (int j = 0; j < n2; j++){
+//         R[j] = arr[mid + 1 + j];
+//     }
 
-    // Merge the temporary arrays back into arr[left..right]
-    int i = 0; // initial index of first subarray
-    int j = 0; // Initial index of second subarray
-    int k = left;  // Initial index of merged subarray
+//     // Merge the temporary arrays back into arr[left..right]
+//     int i = 0; // initial index of first subarray
+//     int j = 0; // Initial index of second subarray
+//     int k = left;  // Initial index of merged subarray
 
-    while (i < n1 && j < n2){
-        if (L[i] <= R[j]) {
-            arr[k] = L[i];
-            i++;
-        } else {
-            arr[k] = R[j];
-            j++;
-        }
-        k++;
-    }
+//     while (i < n1 && j < n2){
+//         if (L[i] <= R[j]) {
+//             arr[k] = L[i];
+//             i++;
+//         } else {
+//             arr[k] = R[j];
+//             j++;
+//         }
+//         k++;
+//     }
 
-    // Copy the remaining elements of L[], if any
-    while(i < n1){
-        arr[k] = L[i];
-        i++;
-        k++;
-    }
+//     // Copy the remaining elements of L[], if any
+//     while(i < n1){
+//         arr[k] = L[i];
+//         i++;
+//         k++;
+//     }
 
-    // Copy the remaining elements of R[], if any
-    while(j < n2){
-        arr[k] = R[j];
-        j++;
-        k++;
-    }
+//     // Copy the remaining elements of R[], if any
+//     while(j < n2){
+//         arr[k] = R[j];
+//         j++;
+//         k++;
+//     }
     
-}
+// }
 
-// Function to implement Merge Sort
-void mergeSort(int arr[], int left, int right){
-    if (left < right){
-        int mid = left + (right - left) / 2;
+// // Function to implement Merge Sort
+// void mergeSort(int arr[], int left, int right){
+//     if (left < right){
+//         int mid = left + (right - left) / 2;
 
-        // Recursively sort the first and second halves
-        mergeSort(arr, left, mid);
-        mergeSort(arr, mid + 1, right);
+//         // Recursively sort the first and second halves
+//         mergeSort(arr, left, mid);
+//         mergeSort(arr, mid + 1, right);
 
-        // Merge the sorted halves
-        merge(arr, left, mid, right);
-    }
-}
+//         // Merge the sorted halves
+//         merge(arr, left, mid, right);
+//     }
+// }
 
-// Functio to print an array
-void printArray(int arr[], int size){
-    for (int i = 0; i < size; i++){
-        cout << arr[i] << " ";
-    }
-    cout << endl;
-}
+// // Functio to print an array
+// void printArray(int arr[], int size){
+//     for (int i = 0; i < size; i++){
+//         cout << arr[i] << " ";
+//     }
+//     cout << endl;
+// }
 
-int main(){
-    int arr[] = {12, 11, 13, 5, 6, 7};
-    int arr_size = sizeof(arr) / sizeof(arr[0]);  
-    // sizeof(arr) -> 6*4 = 24
-    // sizeof(arr[0]) -> 4
-    // 24 / 4 = 6
+// int main(){
+//     int arr[] = {12, 11, 13, 5, 6, 7};
+//     int arr_size = sizeof(arr) / sizeof(arr[0]);  
+//     // sizeof(arr) -> 6*4 = 24
+//     // sizeof(arr[0]) -> 4
+//     // 24 / 4 = 6
 
-    cout << "Original array: ";
-    printArray(arr, arr_size);
+//     cout << "Original array: ";
+//     printArray(arr, arr_size);
 
-    mergeSort(arr, 0, arr_size -1);
+//     mergeSort(arr, 0, arr_size -1);
 
-    cout << "Sorted array: ";
-    printArray(arr, arr_size);
+//     cout << "Sorted array: ";
+//     printArray(arr, arr_size);
 
-    return 0;
-}
+//     return 0;
+// }
 
 
 // T.C -> O(n long n)
@@ -231,3 +231,131 @@ Space Complexity:
 The space complexity of Merge Sort is O(n) due to the temporary arrays used for merging.
 
 */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ++++++++++++++++++ Merge Sort ++++++++++++++++++++++
+
+#include<iostream>
+using namespace std;
+
+// Function to swap two elements
+// void swap(int* a, int* b){
+//     int t = *a;
+//     *a = *b;
+//     *b = t;
+// }
+
+// Function to swap two elements using references
+void swap(int &a, int &b){
+    int temp = a;
+    a = b;
+    b = temp;
+}
+
+// Partition function that places the pivot element at its correct position
+// and places all smaller elements to the left and greater elements to the right
+int partition(int arr[], int low, int high){
+    int pivot = arr[high];
+    int i = (low - 1);
+
+    for (int j = low; j < high; j++){
+        if (arr[j] < pivot){
+            i++;
+            swap(arr[i], arr[j]);
+        }
+    }
+    swap(arr[i + 1], arr[high]);
+    return (i + 1);
+}
+
+// QuickSort function that recursively sorts the array
+void quickSort(int arr[], int low, int high){
+    if (low < high){
+        int pi = partition(arr, low, high);
+
+        // Recursively sort elements befor and after partitioin
+        quickSort(arr, low, pi - 1);
+        quickSort(arr, pi + 1, high);
+    }
+}
+
+// Function to print an array
+void printArray(int arr[], int size){
+    for (int i = 0; i < size; i++){
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+}
+
+int main(){
+    int arr[] = {10, 7, 8, 9, 1, 5};
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    cout << "Original array: ";
+    printArray(arr, n);
+
+    quickSort(arr, 0, n - 1);
+
+    cout << "Sorted array: ";
+    printArray(arr, n);
+
+    return 0;
+}
+
+
+
+
+// T.C -> O(n log n)
+// S.C -> O(log n)
+
+
+/*
+
+Explanation:
+Swap Function Using References:
+
+The swap function now takes two integer references as parameters.
+
+It swaps the values using a temporary variable.
+
+Partition Function:
+
+The partition function remains the same, but it calls the updated swap function that uses references.
+
+QuickSort Function:
+
+The quickSort function remains the same.
+
+Print Array Function:
+
+The printArray function remains the same.
+
+Main Function:
+
+The main function initializes an array and calls the quickSort function to sort the array.
+
+It prints the original and sorted arrays.
+
+
+Time Complexity:
+The time complexity of Quick Sort is O(n log n) on average and O(n^2) in the worst case.
+
+Space Complexity:
+The space complexity of Quick Sort is O(log n) due to the recursion stack.
+ */
