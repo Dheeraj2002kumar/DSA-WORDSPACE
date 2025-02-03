@@ -77,4 +77,4 @@ function bubbleSort1(arr) {
 }
 
 let my_array2 = [7, 3, 9, 12, 11]
-console.log(bubbleSort1(my_array2))
+// console.log(bubbleSort1(my_array2))
