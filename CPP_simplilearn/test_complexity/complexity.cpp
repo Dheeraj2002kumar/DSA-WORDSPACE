@@ -249,7 +249,7 @@ The space complexity of Merge Sort is O(n) due to the temporary arrays used for 
 
 
 
-// ++++++++++++++++++ Merge Sort ++++++++++++++++++++++
+// ++++++++++++++++++ Quick Sort ++++++++++++++++++++++
 
 // #include<iostream>
 // using namespace std;
@@ -376,45 +376,45 @@ The space complexity of Quick Sort is O(log n) due to the recursion stack.
 
 // +++++++++++++++++++++ Bubble Sort +++++++++++++++++++++++++++
 
-#include <iostream>
-using namespace std;
+// #include <iostream>
+// using namespace std;
 
-// Function to perform Bubble Sort
-void bubbleSort(int arr[], int n){
-    for (int i = 0; i < n-1; i++){
-        for (int j = 0; j < n-i-1; j++){
-            if (arr[j] > arr[j + 1]){  // greater than for increasing order and less than for decreasing order
-                // Swap arr[j] and arr[j + 1]
-                int temp = arr[j];
-                arr[j] = arr[j + 1];
-                arr[j + 1] = temp;
-            }
-        }
-    }
-}
+// // Function to perform Bubble Sort
+// void bubbleSort(int arr[], int n){
+//     for (int i = 0; i < n-1; i++){
+//         for (int j = 0; j < n-i-1; j++){
+//             if (arr[j] > arr[j + 1]){  // greater than for increasing order and less than for decreasing order
+//                 // Swap arr[j] and arr[j + 1]
+//                 int temp = arr[j];
+//                 arr[j] = arr[j + 1];
+//                 arr[j + 1] = temp;
+//             }
+//         }
+//     }
+// }
 
-// Function to print an array
-void printArray(int arr[], int size){
-    for (int i = 0; i < size; i++){
-        cout << arr[i] << " ";
-    }
-    cout << endl;
-}
+// // Function to print an array
+// void printArray(int arr[], int size){
+//     for (int i = 0; i < size; i++){
+//         cout << arr[i] << " ";
+//     }
+//     cout << endl;
+// }
 
-int main(){
-    int arr[] = {64, 34, 25, 12, 22, 11, 90};
-    int n = sizeof(arr) / sizeof(arr[0]);
+// int main(){
+//     int arr[] = {64, 34, 25, 12, 22, 11, 90};
+//     int n = sizeof(arr) / sizeof(arr[0]);
 
-    cout << "Original array: ";
-    printArray(arr, n);
+//     cout << "Original array: ";
+//     printArray(arr, n);
 
-    bubbleSort(arr, n);
+//     bubbleSort(arr, n);
 
-    cout << "Sorted array: ";
-    printArray(arr, n);
+//     cout << "Sorted array: ";
+//     printArray(arr, n);
 
-    return 0;
-}
+//     return 0;
+// }
 
 
 
@@ -451,5 +451,107 @@ In the best case (when the array is already sorted), the time complexity is O(n)
 
 Space Complexity:
 The space complexity of Bubble Sort is O(1) since it sorts the array in place without using any additional memory.
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// +++++++++++++++++++ Selection Sort +++++++++++++++++++++++
+// Search through an array and keep track of the minimum value during each iteration. At the end of each iteration, we swap variables.
+
+// Quadratic time O(n^2)
+// Small data set = okay
+// Large data set = Bad
+
+#include<iostream>
+using namespace std;
+
+// Function to perform Selection Sort
+void selectionSort(int arr[], int n){
+    for (int i = 0; i < n-1; i++){
+        int minIndex = i;
+
+        // Find the minimum element in the unsorted part of the array
+        for (int j = i+1; j < n; j++){
+            if (arr[j] < arr[minIndex]){
+                minIndex = j;
+            }
+        }
+
+        // Swap the found minimum element with the first element
+        int temp = arr[minIndex];
+        arr[minIndex] = arr[i];
+        arr[i] = temp;
+    }
+}
+
+// Function to print an array
+void printArray(int arr[], int size){
+    for (int i = 0; i < size; i++){
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+}
+
+int main(){
+    int arr[] = {64, 25, 12, 22, 11};
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    cout << "Original array: ";
+    printArray(arr, n);
+
+    selectionSort(arr, n);
+
+    cout << "Sorted array: ";
+    printArray(arr, n);
+
+    return 0;
+}
+
+
+
+// T.C -> O(n^2)
+// S.C -> O(1)
+
+/*
+
+Explanation:
+Selection Sort Function:
+
+The selectionSort function takes an array and its size as input.
+
+It iterates through the array and for each position, it finds the minimum element in the unsorted part of the array.
+
+It then swaps the found minimum element with the first element of the unsorted part.
+
+This process is repeated for all positions, gradually sorting the array.
+
+Print Array Function:
+
+The printArray function prints the elements of the array.
+
+Main Function:
+
+The main function initializes an array and calls the selectionSort function to sort the array.
+
+It prints the original and sorted arrays.
+
+Time Complexity:
+The time complexity of Selection Sort is O(n^2) in all cases (best, average, and worst).
+
+Space Complexity:
+The space complexity of Selection Sort is O(1) since it sorts the array in place without using any additional memory.
 
 */
