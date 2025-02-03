@@ -571,60 +571,60 @@ The space complexity of Selection Sort is O(1) since it sorts the array in place
 
 // ++++++++++++++++++ Counting Sort +++++++++++++++++++++
 
-#include <iostream>
-#include <vector>
-using namespace std;
+// #include <iostream>
+// #include <vector>
+// using namespace std;
 
-// Fuction to perform Counting Sort
-void countingSort(vector<int> & arr, int n){
-    // Find the maximum element in the array 
-    int max_val = arr[0];
-    for(int i = 1; i < n; i++){
-        if (arr[i] > max_val){
-            max_val = arr[i];
-        }
-    }
+// // Fuction to perform Counting Sort
+// void countingSort(vector<int> & arr, int n){
+//     // Find the maximum element in the array 
+//     int max_val = arr[0];
+//     for(int i = 1; i < n; i++){
+//         if (arr[i] > max_val){
+//             max_val = arr[i];
+//         }
+//     }
 
-    // Initialize a count array with zeros
-    vector<int> count(max_val + 1, 0);
+//     // Initialize a count array with zeros
+//     vector<int> count(max_val + 1, 0);
 
-    // Store the count of each element in the count array
-    for (int i = 0; i < n; i++){
-        count[arr[i]]++;
-    }
+//     // Store the count of each element in the count array
+//     for (int i = 0; i < n; i++){
+//         count[arr[i]]++;
+//     }
 
-    // Store the sorted elements back into the original array
-    int index = 0;
-    for (int i = 0; i <= max_val; i++){
-        while(count[i] > 0){
-            arr[index++] = i;
-            count[i]--;
-        }
-    }
-}
+//     // Store the sorted elements back into the original array
+//     int index = 0;
+//     for (int i = 0; i <= max_val; i++){
+//         while(count[i] > 0){
+//             arr[index++] = i;
+//             count[i]--;
+//         }
+//     }
+// }
 
-// Function to print an array
-void printArray(const vector<int>& arr){
-    for (int i = 0; i < arr.size(); i++){
-        cout << arr[i] << " ";
-    }
-    cout << endl;
-}
+// // Function to print an array
+// void printArray(const vector<int>& arr){
+//     for (int i = 0; i < arr.size(); i++){
+//         cout << arr[i] << " ";
+//     }
+//     cout << endl;
+// }
 
-int main(){
-    vector<int> arr  = {4, 2, 2, 8, 3, 3, 1};
-    int n = arr.size();
+// int main(){
+//     vector<int> arr  = {4, 2, 2, 8, 3, 3, 1};
+//     int n = arr.size();
 
-    cout << "Original Array: ";
-    printArray(arr);
+//     cout << "Original Array: ";
+//     printArray(arr);
 
-    countingSort(arr, n);
+//     countingSort(arr, n);
 
-    cout << "Sorted Array: ";
-    printArray(arr);
+//     cout << "Sorted Array: ";
+//     printArray(arr);
 
-    return 0;
-}
+//     return 0;
+// }
 
 
 
@@ -655,5 +655,139 @@ It prints the original array.
 It calls the countingSort function to sort the array.
 
 It prints the sorted array.
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// +++++++++++++++ Radix Sort ++++++++++++++++++++++
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+// A utility function to get the maximum value in arr[]
+int getMax(const vector<int>& arr){
+    int max_val = arr[0];
+    for (int val : arr){
+        if (val > max_val){
+            max_val = val;
+        }
+    }
+    return max_val;
+}
+
+// A function to perform counting sort on arr[] according to the digit represented by exp
+void countingSort(vector<int>& arr, int exp){
+    int n = arr.size();
+    vector<int> output(n);   // Output array
+    vector<int> count(10, 0);  // Count array to store count of occurrencess of digits (0-9)
+
+    // Store count of occurrences of digits
+    for (int i = 0; i < n; i++){
+        count[(arr[i] / exp) % 10]++;
+    }
+
+    // Change count[i] so that it contains the actual position of this digit in the output array
+    for(int i = 1; i < 10; i++){
+        count[i] += count[i - 1];
+    }
+
+    // Build the output array
+    for(int i = n-1; i >= 0; i--){
+        output[count[(arr[i] / exp) % 10] - 1] = arr[i];
+        count[(arr[i] / exp) % 10]--;
+    }
+
+    // Copy the outpu array to arr[], so that arr now contains sorted numbers according to the current digit
+    for(int i = 0; i < n; i++){
+        arr[i] = output[i];
+    }
+}
+
+// The main function to that sorts arr[] of size n using Radix Sort
+void radixSort(vector<int>& arr){
+    // Find the maximum number to know the number of digits
+    int max_val = getMax(arr);
+
+    // Do counting sort for every digit. Note that instead of passing digit number, exp is passed.
+    for (int exp = 1; max_val / exp > 0; exp *= 10){
+        countingSort(arr, exp);
+    }
+}
+
+// Function to print an array
+void printArray(const vector<int>& arr){
+    for(int val : arr){
+        cout << val << " ";
+    }
+    cout << endl;
+}
+
+int main(){
+    vector<int> arr = {170, 45, 75, 90, 802, 24, 2, 66};
+
+    cout << "Original array: ";
+    printArray(arr);
+
+    radixSort(arr);
+
+    cout << "Sorted array: ";
+    printArray(arr);
+
+    return 0;
+
+}
+
+
+/*
+
+Explanation:
+Get Maximum Function:
+
+The getMax function finds the maximum value in the array. This helps determine the number of digits in the largest number.
+
+Counting Sort Function:
+
+The countingSort function performs counting sort on the array based on the digit represented by exp (1's place, 10's place, 100's place, etc.).
+
+It uses a count array to store the count of each digit and then builds the output array accordingly.
+
+Radix Sort Function:
+
+The radixSort function sorts the array by performing counting sort for every digit (starting from the least significant digit to the most significant digit).
+
+Print Array Function:
+
+The printArray function prints the elements of the array.
+
+Main Function:
+
+The main function initializes a vector with the array values.
+
+It prints the original array.
+
+It calls the radixSort function to sort the array.
+
+It prints the sorted array.
+
+Time Complexity:
+The time complexity of Radix Sort is O(d * (n + k)), where d is the number of digits in the maximum number, n is the number of elements in the array, and k is the range of the input digits (0-9 for decimal digits).
+
+Space Complexity:
+The space complexity of Radix Sort is O(n + k) due to the count and output arrays.
+
 
 */
