@@ -39,56 +39,195 @@
 
 // --------------- Insertion Sort ---------------------------
 
+// #include<iostream>
+// using namespace std;
+
+
+// /*
+// Insertion Sort Function:
+
+// The insertionSort function takes an array and its size as input.
+
+// It starts with the second element and compares it with the elements before it, moving larger elements one position to the right and inserting the element at its correct position.
+
+// This process is repeated for each element in the array.
+// */
+
+// void insertionSort(int arr[], int n){
+//     for (int i = 1; i < n; i++){
+//         int key = arr[i];
+//         int j = i - 1;
+
+//         // Move element fo arr[0.. i-1], that are greater than key,
+//         // to one position ahead of their current position 
+//         while(j >= 0 && arr[j] > key){
+//             arr[j + 1] = arr[j];
+//             j = j - 1;
+//         }
+//         arr[j + 1] = key;
+//     }
+// }
+
+// void printArray(int arr[], int n){
+//     for (int i = 0; i < n; i++){
+//         cout << arr[i] << " ";
+//     }
+//     cout << endl;
+// }
+
+// int main(){
+//     int arr[] = {12, 11, 13, 15, 6};
+//     int n = sizeof(arr) / sizeof(arr[0]);
+
+//     cout << "Original array: ";
+//     printArray(arr, n);
+
+//     insertionSort(arr, n);
+
+//     cout << "Sorted array: ";
+//     printArray(arr, n);
+
+//     return 0;
+// }
+
+// T.C -> O(n^2)
+// S.C -> O(n)
+
+
+
+
+
+
+
+
+// -------------------- Merge sort -----------------------
+
 #include<iostream>
 using namespace std;
 
+// Function to merge two subarrays
+void merge(int arr[], int left, int mid, int right){
+    int n1 = mid - left + 1;
+    int n2 = right - mid;
 
-/*
-Insertion Sort Function:
+    // Create temporary arrays
+    int L[n1], R[n2];
 
-The insertionSort function takes an array and its size as input.
+    // Copy data to temporary arrays
+    for (int i = 0; i < n1; i++){
+        L[i] = arr[left + i];
+    }
 
-It starts with the second element and compares it with the elements before it, moving larger elements one position to the right and inserting the element at its correct position.
+    for (int j = 0; j < n2; j++){
+        R[j] = arr[mid + 1 + j];
+    }
 
-This process is repeated for each element in the array.
-*/
+    // Merge the temporary arrays back into arr[left..right]
+    int i = 0; // initial index of first subarray
+    int j = 0; // Initial index of second subarray
+    int k = left;  // Initial index of merged subarray
 
-void insertionSort(int arr[], int n){
-    for (int i = 1; i < n; i++){
-        int key = arr[i];
-        int j = i - 1;
-
-        // Move element fo arr[0.. i-1], that are greater than key,
-        // to one position ahead of their current position 
-        while(j >= 0 && arr[j] > key){
-            arr[j + 1] = arr[j];
-            j = j - 1;
+    while (i < n1 && j < n2){
+        if (L[i] <= R[j]) {
+            arr[k] = L[i];
+            i++;
+        } else {
+            arr[k] = R[j];
+            j++;
         }
-        arr[j + 1] = key;
+        k++;
+    }
+
+    // Copy the remaining elements of L[], if any
+    while(i < n1){
+        arr[k] = L[i];
+        i++;
+        k++;
+    }
+
+    // Copy the remaining elements of R[], if any
+    while(j < n2){
+        arr[k] = R[j];
+        j++;
+        k++;
+    }
+    
+}
+
+// Function to implement Merge Sort
+void mergeSort(int arr[], int left, int right){
+    if (left < right){
+        int mid = left + (right - left) / 2;
+
+        // Recursively sort the first and second halves
+        mergeSort(arr, left, mid);
+        mergeSort(arr, mid + 1, right);
+
+        // Merge the sorted halves
+        merge(arr, left, mid, right);
     }
 }
 
-void printArray(int arr[], int n){
-    for (int i = 0; i < n; i++){
+// Functio to print an array
+void printArray(int arr[], int size){
+    for (int i = 0; i < size; i++){
         cout << arr[i] << " ";
     }
     cout << endl;
 }
 
 int main(){
-    int arr[] = {12, 11, 13, 15, 6};
-    int n = sizeof(arr) / sizeof(arr[0]);
+    int arr[] = {12, 11, 13, 5, 6, 7};
+    int arr_size = sizeof(arr) / sizeof(arr[0]);  
+    // sizeof(arr) -> 6*4 = 24
+    // sizeof(arr[0]) -> 4
+    // 24 / 4 = 6
 
     cout << "Original array: ";
-    printArray(arr, n);
+    printArray(arr, arr_size);
 
-    insertionSort(arr, n);
+    mergeSort(arr, 0, arr_size -1);
 
     cout << "Sorted array: ";
-    printArray(arr, n);
+    printArray(arr, arr_size);
 
     return 0;
 }
 
-// T.C -> O(n^2)
-// S.C -> O(n)
+
+// T.C -> O(n long n)
+// S.c -> O(n)
+
+
+/*
+
+Explanation:
+Merge Function:
+
+The merge function takes an array and the indices of the left, middle, and right points.
+
+It merges two subarrays (left and right) back into the original array in sorted order.
+
+Merge Sort Function:
+
+The mergeSort function recursively divides the array into two halves and sorts each half.
+
+It then merges the sorted halves using the merge function.
+
+Print Array Function:
+
+The printArray function prints the elements of the array.
+
+Main Function:
+
+The main function initializes an array and calls the mergeSort function to sort the array.
+
+It prints the original and sorted arrays.
+
+Time Complexity:
+The time complexity of Merge Sort is O(n log n) in all cases (best, average, and worst).
+
+Space Complexity:
+The space complexity of Merge Sort is O(n) due to the temporary arrays used for merging.
+
+*/
