@@ -674,82 +674,82 @@ It prints the sorted array.
 
 // +++++++++++++++ Radix Sort ++++++++++++++++++++++
 
-#include <iostream>
-#include <vector>
-using namespace std;
+// #include <iostream>
+// #include <vector>
+// using namespace std;
 
-// A utility function to get the maximum value in arr[]
-int getMax(const vector<int>& arr){
-    int max_val = arr[0];
-    for (int val : arr){
-        if (val > max_val){
-            max_val = val;
-        }
-    }
-    return max_val;
-}
+// // A utility function to get the maximum value in arr[]
+// int getMax(const vector<int>& arr){
+//     int max_val = arr[0];
+//     for (int val : arr){
+//         if (val > max_val){
+//             max_val = val;
+//         }
+//     }
+//     return max_val;
+// }
 
-// A function to perform counting sort on arr[] according to the digit represented by exp
-void countingSort(vector<int>& arr, int exp){
-    int n = arr.size();
-    vector<int> output(n);   // Output array
-    vector<int> count(10, 0);  // Count array to store count of occurrencess of digits (0-9)
+// // A function to perform counting sort on arr[] according to the digit represented by exp
+// void countingSort(vector<int>& arr, int exp){
+//     int n = arr.size();
+//     vector<int> output(n);   // Output array
+//     vector<int> count(10, 0);  // Count array to store count of occurrencess of digits (0-9)
 
-    // Store count of occurrences of digits
-    for (int i = 0; i < n; i++){
-        count[(arr[i] / exp) % 10]++;
-    }
+//     // Store count of occurrences of digits
+//     for (int i = 0; i < n; i++){
+//         count[(arr[i] / exp) % 10]++;
+//     }
 
-    // Change count[i] so that it contains the actual position of this digit in the output array
-    for(int i = 1; i < 10; i++){
-        count[i] += count[i - 1];
-    }
+//     // Change count[i] so that it contains the actual position of this digit in the output array
+//     for(int i = 1; i < 10; i++){
+//         count[i] += count[i - 1];
+//     }
 
-    // Build the output array
-    for(int i = n-1; i >= 0; i--){
-        output[count[(arr[i] / exp) % 10] - 1] = arr[i];
-        count[(arr[i] / exp) % 10]--;
-    }
+//     // Build the output array
+//     for(int i = n-1; i >= 0; i--){
+//         output[count[(arr[i] / exp) % 10] - 1] = arr[i];
+//         count[(arr[i] / exp) % 10]--;
+//     }
 
-    // Copy the outpu array to arr[], so that arr now contains sorted numbers according to the current digit
-    for(int i = 0; i < n; i++){
-        arr[i] = output[i];
-    }
-}
+//     // Copy the outpu array to arr[], so that arr now contains sorted numbers according to the current digit
+//     for(int i = 0; i < n; i++){
+//         arr[i] = output[i];
+//     }
+// }
 
-// The main function to that sorts arr[] of size n using Radix Sort
-void radixSort(vector<int>& arr){
-    // Find the maximum number to know the number of digits
-    int max_val = getMax(arr);
+// // The main function to that sorts arr[] of size n using Radix Sort
+// void radixSort(vector<int>& arr){
+//     // Find the maximum number to know the number of digits
+//     int max_val = getMax(arr);
 
-    // Do counting sort for every digit. Note that instead of passing digit number, exp is passed.
-    for (int exp = 1; max_val / exp > 0; exp *= 10){
-        countingSort(arr, exp);
-    }
-}
+//     // Do counting sort for every digit. Note that instead of passing digit number, exp is passed.
+//     for (int exp = 1; max_val / exp > 0; exp *= 10){
+//         countingSort(arr, exp);
+//     }
+// }
 
-// Function to print an array
-void printArray(const vector<int>& arr){
-    for(int val : arr){
-        cout << val << " ";
-    }
-    cout << endl;
-}
+// // Function to print an array
+// void printArray(const vector<int>& arr){
+//     for(int val : arr){
+//         cout << val << " ";
+//     }
+//     cout << endl;
+// }
 
-int main(){
-    vector<int> arr = {170, 45, 75, 90, 802, 24, 2, 66};
+// int main(){
+//     vector<int> arr = {170, 45, 75, 90, 802, 24, 2, 66};
 
-    cout << "Original array: ";
-    printArray(arr);
+//     cout << "Original array: ";
+//     printArray(arr);
 
-    radixSort(arr);
+//     radixSort(arr);
 
-    cout << "Sorted array: ";
-    printArray(arr);
+//     cout << "Sorted array: ";
+//     printArray(arr);
 
-    return 0;
+//     return 0;
 
-}
+// }
 
 
 /*
@@ -790,4 +790,159 @@ Space Complexity:
 The space complexity of Radix Sort is O(n + k) due to the count and output arrays.
 
 
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// +++++++++++++++++ Other Method for Radix Sort +++++++++++++++
+
+#include<iostream>
+#include<vector>
+using namespace std;
+
+// Function to find the maximum value in the array
+int findMax(const vector<int>& arr){
+    int max = arr[0];
+    for(int val : arr){
+        if (val > max){
+            max = val;
+        }
+    }
+    return max;
+}
+
+// Radix Sort function 
+void radixSort(vector<int>& arr){
+    int n = arr.size();
+    int maxVal = findMax(arr);
+    int exp = 1;
+
+    while(maxVal / exp > 0) {
+        vector<vector<int>> radixArray(10);
+        for (int val : arr){
+            int radixIndex = (val / exp) % 10;
+            radixArray[radixIndex].push_back(val);
+        }
+
+        int pos = 0;
+        for (int i = 0; i < 10; i++){
+            for(int j = 0; j < radixArray[i].size(); j++){
+                arr[pos] = radixArray[i][j];
+                pos++;
+            }
+        }
+        exp *= 10;
+    }
+}
+
+// Funcito to print an array
+void printArray(const vector<int>& arr){
+    for (int val : arr){
+        cout << val << " ";
+    }
+    cout << endl;
+}
+
+int main(){
+    vector<int> myArray = {170, 45, 75, 90, 802, 24, 2, 66};
+
+    cout << "Original array: ";
+    printArray(myArray);
+
+    radixSort(myArray);
+
+    cout << "Sorted array: ";
+    printArray(myArray);
+
+    return 0;
+}
+
+
+
+
+
+/*
+
+Explanation:
+findMax Function:
+
+The findMax function takes a reference to a vector and finds the maximum value in the array.
+
+radixSort Function:
+
+The radixSort function sorts the array using the Radix Sort algorithm.
+
+It creates a 2D vector radixArray to hold the values for each digit.
+
+It distributes the elements into the radixArray based on the current digit (exp).
+
+It then collects the values back into the original array.
+
+The process is repeated for each digit.
+
+printArray Function:
+
+The printArray function prints the elements of the array.
+
+Main Function:
+
+The main function initializes a vector with the array values.
+
+It prints the original array.
+
+It calls the radixSort function to sort the array.
+
+It prints the sorted array.
+
+
+Time Complexity:
+Finding the maximum value:
+
+The function findMax iterates through the array once to find the maximum value.
+
+Time complexity: O(n)
+
+Sorting each digit:
+
+Radix Sort processes each digit of the maximum number.
+
+If d is the number of digits in the maximum number, the number of passes needed is d.
+
+For each pass, counting sort (or distribution count) is used, which takes O(n) time.
+
+Therefore, the total time complexity of Radix Sort is O(d * n), where d is the number of digits in the maximum number and n is the number of elements in the array. In the case of fixed-length integers (e.g., 32-bit or 64-bit integers), d is a constant, making the time complexity effectively O(n).
+
+Space Complexity:
+Count array:
+
+The count array's size is based on the range of digits (0-9), which is a constant size.
+
+Space complexity: O(k) where k is the range of digits. Since k is a constant (10 in this case), it can be considered O(1).
+
+Output array:
+
+An additional array is used to store the sorted output of each pass.
+
+Space complexity: O(n)
+
+Overall, the space complexity of Radix Sort is O(n) due to the additional output array.
+
+Summary:
+Time Complexity: O(d * n)
+
+Space Complexity: O(n)
+
+Radix Sort is efficient for sorting integers or strings where the number of digits (or characters) is relatively small compared to the number of elements. It is especially useful for large datasets with a fixed-length key.
 */
