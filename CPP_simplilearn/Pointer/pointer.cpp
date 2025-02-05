@@ -90,25 +90,25 @@ Syntax:
 
 */
 
-#include <iostream>
+// #include <iostream>
 
-int main() {
-    int a = 10;
-    double b = 3.14;
+// int main() {
+//     int a = 10;
+//     double b = 3.14;
     
-    // Declare a void pointer
-    void* ptr;
+//     // Declare a void pointer
+//     void* ptr;
 
-    // Point the void pointer to an integer
-    ptr = &a;
-    std::cout << "Value of a (int): " << *(static_cast<int*>(ptr)) << std::endl;
+//     // Point the void pointer to an integer
+//     ptr = &a;
+//     std::cout << "Value of a (int): " << *(static_cast<int*>(ptr)) << std::endl;
 
-    // Point the void pointer to a double
-    ptr = &b;
-    std::cout << "Value of b (double): " << *(static_cast<double*>(ptr)) << std::endl;
+//     // Point the void pointer to a double
+//     ptr = &b;
+//     std::cout << "Value of b (double): " << *(static_cast<double*>(ptr)) << std::endl;
 
-    return 0;
-}
+//     return 0;
+// }
 
 
 /*
@@ -120,4 +120,129 @@ Explanation:
 
 - In this example, ptr first points to an int (a) and then to a double (b).
 
+*/
+
+
+
+
+
+
+
+
+
+
+/*
+
+3. Wild pointer
+    A wild pointer is a pointer that is only declare but not assigned an address of any variable. 
+    These pointers are very tricky, and they may cause segmentation errors. 
+
+    Pointer != Variable
+
+
+A wild pointer in C++ is a pointer that has been declared but not initialized, or a pointer that points to a random memory location. Dereferencing a wild pointer leads to undefined behavior and can result in crashes or unpredictable program behavior.
+
+*/
+
+
+// #include <iostream>
+
+// int main() {
+//     int* ptr;  // Wild pointer, uninitialized
+
+//     // Dereferencing a wild pointer is undefined behavior
+//     // Uncommenting the following line will cause unpredictable behavior
+//     // std::cout << *ptr << std::endl;  // Dereferencing wild pointer
+
+//     std::cout << "Wild pointer may point to garbage memory." << std::endl;
+//     std::cout << *ptr << std::endl;
+
+//     int* ptr1 = nullptr;  // Safe initialization
+//     std::cout << *ptr1 << std::endl;
+    
+//     return 0;
+// }
+
+
+
+/*
+
+Explanation:
+    
+    - The pointer ptr is declared but not initialized, which makes it a wild pointer.
+    
+    - Dereferencing ptr without initializing it can lead to unpredictable behavior because it might point to an arbitrary memory location.
+    
+    - If you try to dereference a wild pointer (e.g., *ptr), your program will likely crash or produce garbage data.
+
+To avoid wild pointers, always initialize pointers either to nullptr (or NULL in older C++) or to a valid memory location before dereferencing them. Here's how you might initialize it to nullptr:
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+4. Dangling Pointer:
+    - Let's suppose there is a pointer p pointing at a variable at memory 1004. This pointer will point at a deleted variable if we deallocate this memory, and this pointer p is called dangling pointer.
+
+    - We deallocate memory using a free() function. 
+
+    Pointer ==> variable (deallocate [delete]) ==> Free Space
+
+
+A dangling pointer in C++ is a pointer that continues to reference a memory location after the object it points to has been deleted or gone out of scope. Dereferencing a dangling pointer leads to undefined behavior and can cause crashes or unpredictable behavior.
+
+*/
+
+#include <iostream>
+
+int main() {
+    // Dynamically allocate memory for an integer
+    int* ptr = new int(42);
+
+    // Print the value pointed to by ptr
+    std::cout << "Value: " << *ptr << std::endl;
+
+    // Deallocate the memory
+    delete ptr;
+
+    // Now, ptr is a dangling pointer
+    // Dereferencing a dangling pointer is undefined behavior
+    // Uncommenting the following line may lead to a crash or unpredictable results
+    // std::cout << "Value after delete: " << *ptr << std::endl;
+
+    // Set the pointer to nullptr to avoid the dangling pointer
+    ptr = nullptr;
+
+    return 0;
+}
+
+
+
+/*
+
+Explanation:
+
+
+    - Dynamically allocate memory: We allocate memory for an integer using new and assign the pointer ptr to it.
+
+    - Deallocate memory: The delete operator frees the memory, but ptr still holds the address of the now-deleted memory.
+
+    - Dangling pointer: After delete ptr;, ptr becomes a dangling pointer, meaning it points to a memory location that has been freed.
+
+    - Dereferencing a dangling pointer: Dereferencing a dangling pointer (i.e., trying to access the memory it points to after deletion) leads to undefined behavior and can crash the program or give garbage data.
+
+    - Avoid dangling pointer: The best way to avoid dangling pointers is to set the pointer to nullptr after deleting the memory (ptr = nullptr;), which ensures that it doesn’t point to an invalid memory location.
+
+The output of the above program will correctly print Value: 42, and then it will end. If you try to dereference ptr after delete ptr;, the program will exhibit undefined behavior.
 */
