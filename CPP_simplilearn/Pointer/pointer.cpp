@@ -247,24 +247,79 @@ Explanation:
 The output of the above program will correctly print Value: 42, and then it will end. If you try to dereference ptr after delete ptr;, the program will exhibit undefined behavior.
 */
 
-#include <iostream>
+// #include <iostream>
+// using namespace std;
+
+// int main() {
+//     int* ptr = (int *)malloc(sizeof(int));  // Dynamically allocate memory
+//     if (ptr == nullptr) {  // Always check if malloc was successful
+//         cout << "Memory allocation failed!" << endl;
+//         return 1;
+//     }
+
+//     *ptr = 5;  // Assign value to the allocated memory
+
+//     cout << *ptr << endl;  // Output the value stored in dynamically allocated memory
+
+//     free(ptr);  // Now it's safe to free the dynamically allocated memory
+
+//     // ptr is now a dangling pointer. It's best to set it to nullptr
+//     ptr = nullptr;
+
+//     return 0;
+// }
+
+
+
+
+
+
+
+
+
+
+
+/*
+--------------- Use-Cases of pointer --------------------
+
+1. Pointer Arithmetic
+2. Pointer to pointer
+3. Array of pointers
+4. Call by Vallue
+5. Call by Reference
+
+
+
+1. Pointer Arithmetic
+    We can do different types of arithmetic operations on pointers: 
+    Increment (++)
+    Decrement (--)
+    Integers can be added to pointers (+ or +=)
+    Integers can be subtracted from pointers (- or -=)
+
+Note: Pointer Arithmetic is of no use if not used on arrays
+
+
+Increment(++):
+    We can use this operator to jump from one index to the next index in an array Syntax: 
+        ptr++;
+
+        arr[0] ==> arr[1] ==> arr[2]
+        ptr++       ptr++       ptr++
+*/
+
+
+#include<iostream>
 using namespace std;
 
-int main() {
-    int* ptr = (int *)malloc(sizeof(int));  // Dynamically allocate memory
-    if (ptr == nullptr) {  // Always check if malloc was successful
-        cout << "Memory allocation failed!" << endl;
-        return 1;
+main(){
+    int arr[3] = {2, 3, 5};
+    int *tr;
+    tr = &arr[0];
+
+    for (int i = 0; i < 3; i++){
+        cout << *tr << endl;
+        tr++;
     }
-
-    *ptr = 5;  // Assign value to the allocated memory
-
-    cout << *ptr << endl;  // Output the value stored in dynamically allocated memory
-
-    free(ptr);  // Now it's safe to free the dynamically allocated memory
-
-    // ptr is now a dangling pointer. It's best to set it to nullptr
-    ptr = nullptr;
-
     return 0;
 }
