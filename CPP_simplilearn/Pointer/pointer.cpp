@@ -340,17 +340,60 @@ Decrement (--):
 
 */
 
+// #include <iostream>
+// using namespace std;
+
+// main(){
+//     int arr[3] = {2, 3, 5};
+//     int *ptr;
+//     ptr = &arr[2];
+
+//     for (int i = 0; i < 3; i++){
+//         cout << *ptr << endl;
+//         ptr--;
+//     }
+//     return 0;
+// }
+
+
+
+
+
+/*
+
+Integers added to a pointer
+    We can this operator to jump from one index to the next index in an array. 
+    Syntax:
+        ptr += i;  // where 'i' is an integer
+
+        arr[0] ==> arr[2] ==> arr[4]
+        ptr += 2    ptr += 2    ptr += 2
+
+*/
+
 #include <iostream>
 using namespace std;
 
-main(){
-    int arr[3] = {2, 3, 5};
-    int *ptr;
-    ptr = &arr[2];
+int main() {
+    int arr[] = {1, 2, 3, 4, 5};  // Static array
+    int length = sizeof(arr) / sizeof(arr[0]);  // Calculate the number of elements
 
-    for (int i = 0; i < 3; i++){
-        cout << *ptr << endl;
-        ptr--;
+    int* ptr = arr;  // Pointer pointing to the start of the array
+
+    int numberToAdd = 10;  // The number to add to each array element
+
+    // Add numberToAdd to each array element using the pointer
+    for (int i = 0; i < length; ++i) {
+        *ptr += numberToAdd;  // Dereference the pointer and add the number
+        ptr++;  // Move to the next element in the array
     }
+
+    // Output the modified array
+    cout << "Modified array: ";
+    for (int i = 0; i < length; ++i) {
+        cout << arr[i] << " ";  // Print each element
+    }
+    cout << endl;
+
     return 0;
 }
