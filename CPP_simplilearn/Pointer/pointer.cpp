@@ -309,17 +309,48 @@ Increment(++):
 */
 
 
-#include<iostream>
+// #include<iostream>
+// using namespace std;
+
+// main(){
+//     int arr[3] = {2, 3, 5};
+//     int *tr;
+//     tr = &arr[0];
+
+//     for (int i = 0; i < 3; i++){
+//         cout << *tr << endl;
+//         tr++;
+//     }
+//     return 0;
+// }
+
+
+
+
+
+/*
+
+Decrement (--):
+    We can use this operator to jump from one index to the previous index in an array.
+    Syntax: 
+        ptr--;
+
+        arr[2] ==> arr[1] ==> arr[0]
+        ptr--       ptr--       ptr--
+
+*/
+
+#include <iostream>
 using namespace std;
 
 main(){
     int arr[3] = {2, 3, 5};
-    int *tr;
-    tr = &arr[0];
+    int *ptr;
+    ptr = &arr[2];
 
     for (int i = 0; i < 3; i++){
-        cout << *tr << endl;
-        tr++;
+        cout << *ptr << endl;
+        ptr--;
     }
     return 0;
 }
