@@ -204,28 +204,28 @@ A dangling pointer in C++ is a pointer that continues to reference a memory loca
 
 */
 
-#include <iostream>
+// #include <iostream>
 
-int main() {
-    // Dynamically allocate memory for an integer
-    int* ptr = new int(42);
+// int main() {
+//     // Dynamically allocate memory for an integer
+//     int* ptr = new int(42);
 
-    // Print the value pointed to by ptr
-    std::cout << "Value: " << *ptr << std::endl;
+//     // Print the value pointed to by ptr
+//     std::cout << "Value: " << *ptr << std::endl;
 
-    // Deallocate the memory
-    delete ptr;
+//     // Deallocate the memory
+//     delete ptr;
 
-    // Now, ptr is a dangling pointer
-    // Dereferencing a dangling pointer is undefined behavior
-    // Uncommenting the following line may lead to a crash or unpredictable results
-    // std::cout << "Value after delete: " << *ptr << std::endl;
+//     // Now, ptr is a dangling pointer
+//     // Dereferencing a dangling pointer is undefined behavior
+//     // Uncommenting the following line may lead to a crash or unpredictable results
+//     // std::cout << "Value after delete: " << *ptr << std::endl;
 
-    // Set the pointer to nullptr to avoid the dangling pointer
-    ptr = nullptr;
+//     // Set the pointer to nullptr to avoid the dangling pointer
+//     ptr = nullptr;
 
-    return 0;
-}
+//     return 0;
+// }
 
 
 
@@ -246,3 +246,25 @@ Explanation:
 
 The output of the above program will correctly print Value: 42, and then it will end. If you try to dereference ptr after delete ptr;, the program will exhibit undefined behavior.
 */
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int* ptr = (int *)malloc(sizeof(int));  // Dynamically allocate memory
+    if (ptr == nullptr) {  // Always check if malloc was successful
+        cout << "Memory allocation failed!" << endl;
+        return 1;
+    }
+
+    *ptr = 5;  // Assign value to the allocated memory
+
+    cout << *ptr << endl;  // Output the value stored in dynamically allocated memory
+
+    free(ptr);  // Now it's safe to free the dynamically allocated memory
+
+    // ptr is now a dangling pointer. It's best to set it to nullptr
+    ptr = nullptr;
+
+    return 0;
+}
