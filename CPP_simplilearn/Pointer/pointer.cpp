@@ -445,3 +445,17 @@ ptr2 points to: 10
 PS C:\Users\hp\Desktop\TCS IT\DSA-WORDSPACE\CPP_simplilearn\Pointer>
 
 */ 
+
+/*
+
+Explanation:
+value is an integer variable.
+ptr1 is a pointer to the value variable (i.e., it stores the address of value).
+ptr2 is a pointer to ptr1 (i.e., it stores the address of ptr1).
+When you dereference ptr2 twice (**ptr2), you get the value of value.
+
+Why Use Pointer to Pointer?
+Dynamic memory management: When dealing with multi-dimensional arrays, you often use pointers to pointers.
+Passing pointers by reference: If you want to modify the address stored in a pointer within a function, you use a pointer to a pointer.
+
+*/
