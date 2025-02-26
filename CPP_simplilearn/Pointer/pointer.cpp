@@ -371,29 +371,50 @@ Integers added to a pointer
 
 */
 
-#include <iostream>
-using namespace std;
+// #include <iostream>
+// using namespace std;
 
-int main() {
-    int arr[] = {1, 2, 3, 4, 5};  // Static array
-    int length = sizeof(arr) / sizeof(arr[0]);  // Calculate the number of elements
+// int main() {
+//     int arr[] = {1, 2, 3, 4, 5};  // Static array
+//     int length = sizeof(arr) / sizeof(arr[0]);  // Calculate the number of elements
 
-    int* ptr = arr;  // Pointer pointing to the start of the array
+//     int* ptr = arr;  // Pointer pointing to the start of the array
 
-    int numberToAdd = 10;  // The number to add to each array element
+//     int numberToAdd = 10;  // The number to add to each array element
 
-    // Add numberToAdd to each array element using the pointer
-    for (int i = 0; i < length; ++i) {
-        *ptr += numberToAdd;  // Dereference the pointer and add the number
-        ptr++;  // Move to the next element in the array
-    }
+//     // Add numberToAdd to each array element using the pointer
+//     for (int i = 0; i < length; ++i) {
+//         *ptr += numberToAdd;  // Dereference the pointer and add the number
+//         ptr++;  // Move to the next element in the array
+//     }
 
-    // Output the modified array
-    cout << "Modified array: ";
-    for (int i = 0; i < length; ++i) {
-        cout << arr[i] << " ";  // Print each element
-    }
-    cout << endl;
+//     // Output the modified array
+//     cout << "Modified array: ";
+//     for (int i = 0; i < length; ++i) {
+//         cout << arr[i] << " ";  // Print each element
+//     }
+//     cout << endl;
 
-    return 0;
-}
+//     return 0;
+// }
+
+
+
+
+
+
+
+/*
+
+++++++++++++ Pointer to Pointer ++++++++++++++++++++++
+
+In C++, a pointer to a pointer is a concept where a pointer holds the address of another pointer. Essentially, it's a pointer that points to another pointer, which in turn points to a variable. This is typically used when working with dynamic memory or in scenarios where you want to manipulate the address of a pointer itself.
+
+
+Syntax
+
+type **pointer_name;
+
+Here, type is the data type of the variable being pointed to, and pointer_name is the name of the pointer to pointer.
+
+*/ 
