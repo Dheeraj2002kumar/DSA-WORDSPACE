@@ -459,3 +459,30 @@ Dynamic memory management: When dealing with multi-dimensional arrays, you often
 Passing pointers by reference: If you want to modify the address stored in a pointer within a function, you use a pointer to a pointer.
 
 */
+
+
+
+
+
+
+
+
+// ---------------- Dynamic Memory Allocation ---------------------
+
+#include<iostream>
+using namespace std;
+
+int main(){
+    int **ptr;
+    ptr = new int*;  // allocate memory for pointer to pointer
+    *ptr = new int;   // allocate memory for integer
+
+    **ptr = 25;   // assign value to the integer throgh pointer to pointer
+
+    cout << "Value: " << **ptr << endl;  // output 25
+
+    delete *ptr;  // free the allocated memory
+    delete ptr;     // free the pointer to pointer memory
+
+    return 0;
+}
