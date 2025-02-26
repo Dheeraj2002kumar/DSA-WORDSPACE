@@ -418,3 +418,18 @@ type **pointer_name;
 Here, type is the data type of the variable being pointed to, and pointer_name is the name of the pointer to pointer.
 
 */ 
+
+#include <iostream>
+using namespace std;
+
+int main(){
+    int value = 10;            // a normal integer variable
+    int *ptr1 = &value;        // ptr1 is a pointer to the integer value
+    int **ptr2 = &ptr1;        // ptr2 is a pointer to ptr1, which is pointer to value
+
+    cout << "Value: " << value << endl;
+    cout << "ptr1 points to: " << *ptr1 << endl;  // Dereferencing ptr1 gives the value
+    cout << "ptr2 points to: " << **ptr2 << endl; // Dereferencing ptr2 twice gives the value 
+
+    return 0;
+}
