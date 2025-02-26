@@ -486,3 +486,26 @@ int main(){
 
     return 0;
 }
+
+/*
+
+-------------- output ----------------------------
+
+PS C:\Users\hp\Desktop\TCS IT\DSA-WORDSPACE\CPP_simplilearn\Pointer> g++ pointer.cpp -o pointer
+PS C:\Users\hp\Desktop\TCS IT\DSA-WORDSPACE\CPP_simplilearn\Pointer> ./pointer
+Value: 25
+*/
+
+
+
+
+/*
+
+In this case:
+
+ptr is a pointer to a pointer to an integer.
+*ptr points to an integer (dynamically allocated).
+**ptr is the value stored at that dynamically allocated memory.
+Using pointers to pointers is a powerful tool in C++, but it should be used carefully to manage memory properly and avoid pointer-related errors like memory leaks or segmentation faults.
+
+*/
