@@ -50,12 +50,6 @@ For the brute force approach ignore the time complexity mentioned at 6: 40 in th
 */
 
 
-/**
- * Function to find all the starting indices of the anagrams of P in S
- * @param {string} s - Main string
- * @param {string} p - Pattern string (for which anagrams need to be found)
- * @return {number[]} - Array of indices where anagrams start
- */
 function findAllAnagramsInAString(s, p) {
     let n = s.length;
     let m = p.length;
@@ -93,13 +87,17 @@ function findAllAnagramsInAString(s, p) {
     return result;
 }
 
-// Main function to read input and process the query
-function main() {
-    let [s, p] = readLine().split(" "); // Read both strings S and P
-    let result = findAllAnagramsInAString(s, p); // Find all anagrams' starting indices
-
-    console.log(result.length); // Output the number of starting indices
-    if (result.length > 0) {
-        console.log(result.join(" ")); // Output the starting indices space-separated
+// Helper function to compare two frequency arrays
+function arraysAreEqual(arr1, arr2) {
+    for (let i = 0; i < 26; i++) {
+        if (arr1[i] !== arr2[i]) {
+            return false;
+        }
     }
+    return true;
 }
+
+
+console.log(findAllAnagramsInAString("aaba", "ab"));
+
+console.log(findAllAnagramsInAString("bacdgabcda", "abcd"));
