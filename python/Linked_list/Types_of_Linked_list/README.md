@@ -279,4 +279,252 @@ cList.printList(); // Output: 10 → 20 → 30 → (back to start)
 | **Doubly Linked List** | Fast traversal in both directions |
 | **Circular Linked List** | Ideal for circular scheduling, playlists, etc. |
 
+---
+
+<br>
+<br>
+
+# <center>🐍Python
+
+<br>
+
+# **📌 Types of Linked Lists in Python**  
+
+### **1️⃣ Singly Linked List (SLL)**
+### **2️⃣ Doubly Linked List (DLL)**
+### **3️⃣ Circular Linked List (CLL)**
+
+---
+
+## **1️⃣ Singly Linked List (SLL)**
+A **Singly Linked List** consists of nodes where each node contains:
+1. **Data**
+2. **Pointer (next) to the next node**  
+
+### **➡️ Example:**
+```
+[10] → [20] → [30] → None
+```
+👉 The last node points to `None`.
+
+### **🔹 Implementation of Singly Linked List**
+```python
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+class SinglyLinkedList:
+    def __init__(self):
+        self.head = None
+
+    # Insert at the end
+    def append(self, data):
+        new_node = Node(data)
+        if not self.head:
+            self.head = new_node
+            return
+        current = self.head
+        while current.next:
+            current = current.next
+        current.next = new_node
+
+    # Insert at the beginning
+    def prepend(self, data):
+        new_node = Node(data)
+        new_node.next = self.head
+        self.head = new_node
+
+    # Delete a node by value
+    def delete(self, data):
+        if not self.head:
+            return
+        if self.head.data == data:
+            self.head = self.head.next
+            return
+        current = self.head
+        while current.next and current.next.data != data:
+            current = current.next
+        if current.next:
+            current.next = current.next.next
+
+    # Print the list
+    def print_list(self):
+        current = self.head
+        while current:
+            print(current.data, end=" → ")
+            current = current.next
+        print("None")
+
+# Example usage:
+sll = SinglyLinkedList()
+sll.append(10)
+sll.append(20)
+sll.prepend(5)
+sll.print_list()  # Output: 5 → 10 → 20 → None
+sll.delete(10)
+sll.print_list()  # Output: 5 → 20 → None
+```
+✅ **Operations Complexity:**
+- Insert at head: `O(1)`
+- Insert at tail: `O(n)`
+- Delete a node: `O(n)`
+- Search: `O(n)`
+
+---
+
+## **2️⃣ Doubly Linked List (DLL)**
+Each node has:
+1. **Data**
+2. **Pointer to next node (`next`)**
+3. **Pointer to previous node (`prev`)**
+
+### **➡️ Example:**
+```
+None ← [10] ⇄ [20] ⇄ [30] → None
+```
+👉 Each node has **both forward and backward links**.
+
+### **🔹 Implementation of Doubly Linked List**
+```python
+class DNode:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+        self.prev = None
+
+class DoublyLinkedList:
+    def __init__(self):
+        self.head = None
+        self.tail = None
+
+    # Insert at the end
+    def append(self, data):
+        new_node = DNode(data)
+        if not self.head:
+            self.head = self.tail = new_node
+            return
+        self.tail.next = new_node
+        new_node.prev = self.tail
+        self.tail = new_node
+
+    # Insert at the beginning
+    def prepend(self, data):
+        new_node = DNode(data)
+        if not self.head:
+            self.head = self.tail = new_node
+            return
+        new_node.next = self.head
+        self.head.prev = new_node
+        self.head = new_node
+
+    # Delete a node by value
+    def delete(self, data):
+        if not self.head:
+            return
+        current = self.head
+        while current and current.data != data:
+            current = current.next
+        if not current:
+            return
+        if current == self.head:
+            self.head = current.next
+        if current == self.tail:
+            self.tail = current.prev
+        if current.prev:
+            current.prev.next = current.next
+        if current.next:
+            current.next.prev = current.prev
+
+    # Print the list
+    def print_list(self):
+        current = self.head
+        while current:
+            print(current.data, end=" ⇄ ")
+            current = current.next
+        print("None")
+
+# Example usage:
+dll = DoublyLinkedList()
+dll.append(10)
+dll.append(20)
+dll.prepend(5)
+dll.print_list()  # Output: 5 ⇄ 10 ⇄ 20 ⇄ None
+dll.delete(10)
+dll.print_list()  # Output: 5 ⇄ 20 ⇄ None
+```
+✅ **Operations Complexity:**
+- Insert at head: `O(1)`
+- Insert at tail: `O(1)`
+- Delete a node: `O(n)`
+- Search: `O(n)`
+
+---
+
+## **3️⃣ Circular Linked List (CLL)**
+The **last node points back to the first node**, making a loop.
+
+### **➡️ Example:**
+```
+[10] → [20] → [30] → [10] (back to start)
+```
+### **🔹 Implementation of Circular Linked List**
+```python
+class CNode:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+class CircularLinkedList:
+    def __init__(self):
+        self.head = None
+
+    # Insert at the end
+    def append(self, data):
+        new_node = CNode(data)
+        if not self.head:
+            self.head = new_node
+            self.head.next = self.head  # Circular link
+            return
+        current = self.head
+        while current.next != self.head:
+            current = current.next
+        current.next = new_node
+        new_node.next = self.head
+
+    # Print the list
+    def print_list(self):
+        if not self.head:
+            return
+        current = self.head
+        result = []
+        while True:
+            result.append(str(current.data))
+            current = current.next
+            if current == self.head:
+                break
+        print(" → ".join(result) + " → (back to start)")
+
+# Example usage:
+cll = CircularLinkedList()
+cll.append(10)
+cll.append(20)
+cll.append(30)
+cll.print_list()  # Output: 10 → 20 → 30 → (back to start)
+```
+✅ **Operations Complexity:**
+- Insert at head: `O(1)`
+- Insert at tail: `O(n)`
+- Delete a node: `O(n)`
+- Search: `O(n)`
+
+---
+
+# **📌 Conclusion**
+| **Type** | **Use Case** |
+|----------|-------------|
+| **Singly Linked List** | Basic operations where backward traversal is not needed |
+| **Doubly Linked List** | Fast traversal in both directions |
+| **Circular Linked List** | Ideal for circular scheduling, playlists, etc. |
+
 implement **a real-world project using Linked Lists**, such as a **to-do list or music playlist manager** 🚀
