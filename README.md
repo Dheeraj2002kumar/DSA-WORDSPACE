@@ -37,6 +37,7 @@ This repository provides an overview of various **data structures** and **algori
 - Used in network representation, social connections, and pathfinding.
 
 ## Algorithms
+---
 
 ### 1. Sorting Algorithms
 - Rearrange elements in a specific order (e.g., ascending or descending).
