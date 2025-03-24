@@ -4,6 +4,7 @@
 This repository provides an overview of various **data structures** and **algorithms** implemented using the C++ programming language. Below, we explore some common data structures and algorithms, along with their applications.
 
 ## Data Structures
+---
 
 ### 1. Arrays
 - A fixed-size sequence of elements of the same type.
@@ -36,6 +37,7 @@ This repository provides an overview of various **data structures** and **algori
 - Used in network representation, social connections, and pathfinding.
 
 ## Algorithms
+---
 
 ### 1. Sorting Algorithms
 - Rearrange elements in a specific order (e.g., ascending or descending).
