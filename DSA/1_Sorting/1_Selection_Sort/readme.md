@@ -123,3 +123,97 @@ console.log("Sorted array (Descending):", selectionSortDescending(array2));  // 
 ---
 
 Would you like to see a **step-by-step animation in the browser** using HTML/CSS/JS as well?
+
+Absolutely! Here's how you can implement **Selection Sort** in **C++**, including both **ascending** and **descending** order versions.
+
+---
+
+### ✅ Selection Sort in C++ (Ascending Order)
+
+```cpp
+#include <iostream>
+using namespace std;
+
+void selectionSortAscending(int arr[], int n) {
+    for (int i = 0; i < n - 1; i++) {
+        int minIndex = i;
+
+        // Find the index of the smallest element
+        for (int j = i + 1; j < n; j++) {
+            if (arr[j] < arr[minIndex]) {
+                minIndex = j;
+            }
+        }
+
+        // Swap the found minimum with the current element
+        if (minIndex != i) {
+            swap(arr[i], arr[minIndex]);
+        }
+    }
+}
+
+void printArray(int arr[], int n) {
+    for (int i = 0; i < n; i++)
+        cout << arr[i] << " ";
+    cout << endl;
+}
+
+int main() {
+    int arr[] = {64, 25, 12, 22, 11};
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    selectionSortAscending(arr, n);
+    cout << "Sorted array in ascending order: ";
+    printArray(arr, n);
+
+    return 0;
+}
+```
+
+---
+
+### 🔽 Selection Sort in C++ (Descending Order)
+
+Just flip the comparison:
+
+```cpp
+#include <iostream>
+using namespace std;
+
+void selectionSortDescending(int arr[], int n) {
+    for (int i = 0; i < n - 1; i++) {
+        int maxIndex = i;
+
+        for (int j = i + 1; j < n; j++) {
+            if (arr[j] > arr[maxIndex]) {
+                maxIndex = j;
+            }
+        }
+
+        if (maxIndex != i) {
+            swap(arr[i], arr[maxIndex]);
+        }
+    }
+}
+
+void printArray(int arr[], int n) {
+    for (int i = 0; i < n; i++)
+        cout << arr[i] << " ";
+    cout << endl;
+}
+
+int main() {
+    int arr[] = {64, 25, 12, 22, 11};
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    selectionSortDescending(arr, n);
+    cout << "Sorted array in descending order: ";
+    printArray(arr, n);
+
+    return 0;
+}
+```
+
+---
+
+Let me know if you'd like a **step-by-step visual explanation** in C++ too, or want to sort strings, structs, or use `vector<int>` instead of arrays.
