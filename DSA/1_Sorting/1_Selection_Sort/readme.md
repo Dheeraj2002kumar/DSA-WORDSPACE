@@ -51,3 +51,75 @@ console.log("Sorted array:", selectionSort(array));  // Output: [11, 12, 22, 25,
 Let me know if you want a visual version or want to sort descending instead.
 
 
+Great! Since you said **"yes"**, I’ll provide both a **visual version** of Selection Sort and a **descending order** version.
+
+---
+
+### 🎨 Visual Version (With Console Logs)
+
+```javascript
+function selectionSortVisual(arr) {
+    const n = arr.length;
+
+    for (let i = 0; i < n - 1; i++) {
+        let minIndex = i;
+        console.log(`\nStep ${i + 1}:`);
+        console.log(`Start from index ${i}, current array: [${arr.join(', ')}]`);
+
+        for (let j = i + 1; j < n; j++) {
+            if (arr[j] < arr[minIndex]) {
+                minIndex = j;
+            }
+        }
+
+        if (minIndex !== i) {
+            console.log(`Swapping ${arr[i]} and ${arr[minIndex]}`);
+            [arr[i], arr[minIndex]] = [arr[minIndex], arr[i]];
+        } else {
+            console.log(`No swap needed for index ${i}`);
+        }
+        console.log(`Result after step ${i + 1}: [${arr.join(', ')}]`);
+    }
+
+    return arr;
+}
+
+const array1 = [64, 25, 12, 22, 11];
+console.log("Final Sorted Array (Ascending):", selectionSortVisual(array1));
+```
+
+---
+
+### 🔽 Selection Sort (Descending Order)
+
+Just reverse the comparison:
+
+```javascript
+function selectionSortDescending(arr) {
+    const n = arr.length;
+
+    for (let i = 0; i < n - 1; i++) {
+        let maxIndex = i;
+
+        for (let j = i + 1; j < n; j++) {
+            if (arr[j] > arr[maxIndex]) {
+                maxIndex = j;
+            }
+        }
+
+        if (maxIndex !== i) {
+            [arr[i], arr[maxIndex]] = [arr[maxIndex], arr[i]];
+        }
+    }
+
+    return arr;
+}
+
+// Example usage
+const array2 = [64, 25, 12, 22, 11];
+console.log("Sorted array (Descending):", selectionSortDescending(array2));  // Output: [64, 25, 22, 12, 11]
+```
+
+---
+
+Would you like to see a **step-by-step animation in the browser** using HTML/CSS/JS as well?
