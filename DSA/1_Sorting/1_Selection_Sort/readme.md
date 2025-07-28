@@ -217,3 +217,99 @@ int main() {
 ---
 
 Let me know if you'd like a **step-by-step visual explanation** in C++ too, or want to sort strings, structs, or use `vector<int>` instead of arrays.
+
+
+Great! Let's walk through a **step-by-step visual explanation of Selection Sort in C++**, using **console output** to show each pass of the sort.
+
+---
+
+### 🎯 Goal:
+
+Enhance understanding by printing the array after each step and showing which elements are being compared and swapped.
+
+---
+
+### 🔍 Step-by-Step Visual Version (Ascending Order):
+
+```cpp
+#include <iostream>
+using namespace std;
+
+void printArray(int arr[], int n, int step = -1) {
+    if (step != -1)
+        cout << "Step " << step << ": ";
+    for (int i = 0; i < n; i++)
+        cout << arr[i] << " ";
+    cout << endl;
+}
+
+void selectionSortVisual(int arr[], int n) {
+    for (int i = 0; i < n - 1; i++) {
+        int minIndex = i;
+        cout << "\n--- Iteration " << i + 1 << " ---" << endl;
+        cout << "Unsorted portion: ";
+        for (int k = i; k < n; k++) cout << arr[k] << " ";
+        cout << endl;
+
+        for (int j = i + 1; j < n; j++) {
+            cout << "Compare arr[" << minIndex << "] = " << arr[minIndex]
+                 << " and arr[" << j << "] = " << arr[j] << endl;
+            if (arr[j] < arr[minIndex]) {
+                minIndex = j;
+                cout << "→ New min found at index " << minIndex << ": " << arr[minIndex] << endl;
+            }
+        }
+
+        if (minIndex != i) {
+            cout << "Swapping " << arr[i] << " and " << arr[minIndex] << endl;
+            swap(arr[i], arr[minIndex]);
+        } else {
+            cout << "No swap needed for this iteration." << endl;
+        }
+
+        printArray(arr, n, i + 1);
+    }
+}
+
+int main() {
+    int arr[] = {64, 25, 12, 22, 11};
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    cout << "Initial array: ";
+    printArray(arr, n);
+    
+    selectionSortVisual(arr, n);
+
+    cout << "\nFinal sorted array: ";
+    printArray(arr, n);
+    return 0;
+}
+```
+
+---
+
+### 🧪 Output Example:
+
+```
+Initial array: 64 25 12 22 11
+
+--- Iteration 1 ---
+Unsorted portion: 64 25 12 22 11
+Compare arr[0] = 64 and arr[1] = 25
+→ New min found at index 1: 25
+Compare arr[1] = 25 and arr[2] = 12
+→ New min found at index 2: 12
+Compare arr[2] = 12 and arr[3] = 22
+Compare arr[2] = 12 and arr[4] = 11
+→ New min found at index 4: 11
+Swapping 64 and 11
+Step 1: 11 25 12 22 64
+
+... (other steps follow)
+
+Final sorted array: 11 12 22 25 64
+```
+
+---
+
+Would you also like a **step-by-step version for descending order**, or a **C++ version using vectors** instead of raw arrays?
