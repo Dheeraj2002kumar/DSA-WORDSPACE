@@ -1,5 +1,9 @@
 {
   "name": "C/C++ Dev Container",
-  "image": "mcr.microsoft.com/devcontainers/cpp:ubuntu-24.04"
+  "image": "mcr.microsoft.com/devcontainers/cpp:ubuntu-24.04",
+  "features": {
+    "ghcr.io/devcontainers/features/java:1": {},
+    "ghcr.io/devcontainers/features/node:1": {}
+  }
 }
  
