@@ -56,9 +56,22 @@ Follow up: Could you solve it without loops/recursion?
 //     }
 // };
 
+// --------------- othere solution ------------------
+
+// class Solution {
+//     public:
+//     bool isPowerOfTwo(int n) {
+//         return n > 0 && (n & (n - 1)) == 0;
+//     }
+// };
+
+
+
+// --------------- othere solution ------------------
+
 class Solution {
 public:
     bool isPowerOfTwo(int n) {
-        return n > 0 && (n & (n - 1)) == 0;
+        return n > 0 and ((1 << 30) % n) == 0;
     }
 };
