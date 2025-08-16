@@ -154,41 +154,68 @@ int main(){
     // --------------------------------------------------------
 
     // sort the value of vactor arr
-    vector<int>ans;
-    ans.push_back(33);
-    ans.push_back(22);
-    ans.push_back(11);
-    ans.push_back(44);
-    ans.push_back(55);
+    // vector<int>ans;
+    // ans.push_back(33);
+    // ans.push_back(22);
+    // ans.push_back(11);
+    // ans.push_back(44);
+    // ans.push_back(55);
 
-    // befor sorting the value
-    cout << "Before sorting: " << endl;
-    for (int i = 0; i < ans.size(); i++){
-        cout << ans[i] << " ";
-    }
-    cout << endl;
+    // // befor sorting the value
+    // cout << "Before sorting: " << endl;
+    // for (int i = 0; i < ans.size(); i++){
+    //     cout << ans[i] << " ";
+    // }
+    // cout << endl;
     
-    // after sorting the value
-    cout << "After sorting: " << endl;
-    sort(ans.begin(), ans.end()); // sort in accending order
-    for (auto i : ans){
-        cout << i << " ";
-    }
-    cout << endl;
+    // // after sorting the value
+    // cout << "After sorting: " << endl;
+    // sort(ans.begin(), ans.end()); // sort in accending order
+    // for (auto i : ans){
+    //     cout << i << " ";
+    // }
+    // cout << endl;
 
 
-    // sort in decresing order
-    sort(ans.begin(), ans.end(), greater<int>());
+    // // sort in decresing order
+    // sort(ans.begin(), ans.end(), greater<int>());
 
-    // second method to sort decresing order
-    // sort(ans.rbegin(), ans.rend());
+    // // second method to sort decresing order
+    // // sort(ans.rbegin(), ans.rend());
 
-    cout << "After sorting in decresing order: " << endl;
-    for (int i = 0; i < ans.size(); i++){
-        cout << ans[i] << " ";
-    }
-    cout << endl;
+    // cout << "After sorting in decresing order: " << endl;
+    // for (int i = 0; i < ans.size(); i++){
+    //     cout << ans[i] << " ";
+    // }
+    // cout << endl;
  
+
+
+    // --------------------------------------------------------
+
+    // Search in binary search
+    vector<int>arr = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+
+    cout << "Size of arr: " << arr.size() << endl;
+    cout << "Capacity of arr: " << arr.capacity() << endl;
+
+    for (int i = 0; i < arr.size(); i++){
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+
+    // searching using binary_search function
+    cout << binary_search(arr.begin(), arr.end(), 7) << endl;
+
+    // find index value of particular element
+    cout << find(arr.begin(), arr.end(), 5) - arr.begin() << endl;
+    
+    cout << lower_bound(arr.begin(), arr.end(), 7) - arr.begin() << endl;
+    cout << upper_bound(arr.begin(), arr.end(), 7) - arr.begin() << endl;
+
+    // find maximum and minimum value
+    cout << "Maximum value: " << *max_element(arr.begin(), arr.end()) << endl;
+    cout << "Minimum value: " << *min_element(arr.begin(), arr.end()) << endl;
     
 
     return 0;
