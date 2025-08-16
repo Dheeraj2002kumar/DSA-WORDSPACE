@@ -35,5 +35,72 @@ int main(){
     // cout << "Size of v1: " << v1.size() << endl;
     // cout << "Capacity of v1: " << v1.capacity() << endl;
 
+    // vector<int>v2 = {1, 2, 3, 4, 5};
+    // cout << "Size of v2: " << v2.size() << endl;
+    // cout << "Capacity of v2: " << v2.capacity() << endl;
+
+    
+    // Delete value from vector
+    vector<int>vnew;
+    vnew.push_back(4);
+    vnew.push_back(5);
+    vnew.push_back(6);
+    vnew.push_back(7);
+    vnew.push_back(8);
+
+    cout << "Size of vnew: " << vnew.size() << endl;
+    cout << "Capacity of vnew: " << vnew.capacity() << endl;
+
+    // print the value
+    for(int i = 0; i < vnew.size(); i++){
+        cout << vnew[i] << " ";
+    }
+    cout<< endl;
+
+    // delete value
+
+    vnew.pop_back();
+    cout << "Size of vnew: " << vnew.size() << endl;
+    cout << "Capacity of vnew: " << vnew.capacity() << endl;
+    // print the value
+    for (int i = 0; i < vnew.size(); i++){
+        cout << vnew[i] << " ";
+    }
+    cout << endl;
+
+    // remove element from begin
+    vnew.erase(vnew.begin() + 1);
+    cout << "Size of vnew: " << vnew.size() << endl;
+    cout << "Capacity of vnew: " << vnew.capacity() << endl;
+
+    // print the value
+    for (int i = 0; i < vnew.size(); i++){
+        cout << vnew[i] << " ";
+    }
+    cout << endl;
+
+    // insert element from begin + 1
+    vnew.insert(vnew.begin() + 1, 10); // vnew.begin() + 1 --> index value after element and 10 --> element that we want to insert
+    
+    vnew.insert(vnew.begin() + 3, 55); // vnew.begin() + 3 --> index value after element and 55 --> element that we want to insert
+
+    // print the value
+    for (int i = 0; i < vnew.size(); i++){
+        cout << vnew[i] << " ";
+    }
+    cout << endl;
+
+
+    // update the value at 2 index
+    vnew[1] = 100;
+    for (int i = 0; i < vnew.size(); i++){
+        cout << vnew[i] << " ";
+    }
+    cout << endl;
+
+
+
+
+
     return 0;
 }
