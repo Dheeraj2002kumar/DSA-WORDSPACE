@@ -98,7 +98,15 @@ int main(){
     }
     cout << endl;
 
+    
 
+
+    // if we want to clear the element
+    vnew.clear();   // Remove all the element
+    cout << "Size of vnew: " << vnew.size() << endl;
+    cout << "Capacity of vnew: " << vnew.capacity() << endl;
+
+    
 
 
 
