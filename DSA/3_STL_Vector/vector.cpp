@@ -2,6 +2,7 @@
 
 #include<iostream>
 #include<vector>
+#include <algorithm>
 using namespace std;
 
 int main(){
@@ -39,76 +40,156 @@ int main(){
     // cout << "Size of v2: " << v2.size() << endl;
     // cout << "Capacity of v2: " << v2.capacity() << endl;
 
+
+    // ---------------------------------------------------------
     
     // Delete value from vector
-    vector<int>vnew;
-    vnew.push_back(4);
-    vnew.push_back(5);
-    vnew.push_back(6);
-    vnew.push_back(7);
-    vnew.push_back(8);
+    // vector<int>vnew;
+    // vnew.push_back(4);
+    // vnew.push_back(5);
+    // vnew.push_back(6);
+    // vnew.push_back(7);
+    // vnew.push_back(8);
 
-    cout << "Size of vnew: " << vnew.size() << endl;
-    cout << "Capacity of vnew: " << vnew.capacity() << endl;
+    // cout << "Size of vnew: " << vnew.size() << endl;
+    // cout << "Capacity of vnew: " << vnew.capacity() << endl;
 
-    // print the value
-    for(int i = 0; i < vnew.size(); i++){
-        cout << vnew[i] << " ";
-    }
-    cout<< endl;
+    // // print the value
+    // for(int i = 0; i < vnew.size(); i++){
+    //     cout << vnew[i] << " ";
+    // }
+    // cout<< endl;
 
-    // delete value
+    // // delete value
 
-    vnew.pop_back();
-    cout << "Size of vnew: " << vnew.size() << endl;
-    cout << "Capacity of vnew: " << vnew.capacity() << endl;
-    // print the value
-    for (int i = 0; i < vnew.size(); i++){
-        cout << vnew[i] << " ";
-    }
-    cout << endl;
+    // vnew.pop_back();
+    // cout << "Size of vnew: " << vnew.size() << endl;
+    // cout << "Capacity of vnew: " << vnew.capacity() << endl;
+    // // print the value
+    // for (int i = 0; i < vnew.size(); i++){
+    //     cout << vnew[i] << " ";
+    // }
+    // cout << endl;
 
-    // remove element from begin
-    vnew.erase(vnew.begin() + 1);
-    cout << "Size of vnew: " << vnew.size() << endl;
-    cout << "Capacity of vnew: " << vnew.capacity() << endl;
+    // // remove element from begin
+    // vnew.erase(vnew.begin() + 1);
+    // cout << "Size of vnew: " << vnew.size() << endl;
+    // cout << "Capacity of vnew: " << vnew.capacity() << endl;
 
-    // print the value
-    for (int i = 0; i < vnew.size(); i++){
-        cout << vnew[i] << " ";
-    }
-    cout << endl;
+    // // print the value
+    // for (int i = 0; i < vnew.size(); i++){
+    //     cout << vnew[i] << " ";
+    // }
+    // cout << endl;
 
-    // insert element from begin + 1
-    vnew.insert(vnew.begin() + 1, 10); // vnew.begin() + 1 --> index value after element and 10 --> element that we want to insert
+    // // insert element from begin + 1
+    // vnew.insert(vnew.begin() + 1, 10); // vnew.begin() + 1 --> index value after element and 10 --> element that we want to insert
     
-    vnew.insert(vnew.begin() + 3, 55); // vnew.begin() + 3 --> index value after element and 55 --> element that we want to insert
+    // vnew.insert(vnew.begin() + 3, 55); // vnew.begin() + 3 --> index value after element and 55 --> element that we want to insert
 
-    // print the value
-    for (int i = 0; i < vnew.size(); i++){
-        cout << vnew[i] << " ";
-    }
-    cout << endl;
-
-
-    // update the value at 2 index
-    vnew[1] = 100;
-    for (int i = 0; i < vnew.size(); i++){
-        cout << vnew[i] << " ";
-    }
-    cout << endl;
-
-    
+    // // print the value
+    // for (int i = 0; i < vnew.size(); i++){
+    //     cout << vnew[i] << " ";
+    // }
+    // cout << endl;
 
 
-    // if we want to clear the element
-    vnew.clear();   // Remove all the element
-    cout << "Size of vnew: " << vnew.size() << endl;
-    cout << "Capacity of vnew: " << vnew.capacity() << endl;
+    // // update the value at 2 index
+    // vnew[1] = 100;
+    // for (int i = 0; i < vnew.size(); i++){
+    //     cout << vnew[i] << " ";
+    // }
+    // cout << endl;
 
     
 
 
+    // // if we want to clear the element
+    // vnew.clear();   // Remove all the element
+    // cout << "Size of vnew: " << vnew.size() << endl;
+    // cout << "Capacity of vnew: " << vnew.capacity() << endl;
+
+ 
+    
+    // ------------------------------------------------------------
+
+    // print first and last element
+    // vector<int>arr;
+    // arr.push_back(1);
+    // arr.push_back(2);
+    // arr.push_back(3);
+    // arr.push_back(4);
+    // arr.push_back(5);
+
+    // // print first element
+    // cout << "First element: " << arr.front() << endl;
+    // cout << "First element: " << arr[0] << endl;  // this  second method
+
+    // // print last element
+    // cout << "Last element: " << arr.back() << endl;
+    // cout << "Last element: " << arr[arr.size() - 1] << endl; // this second method
+  
+
+    // // copy value of vector<int>arr to vector<int>a
+    // vector<int>a;
+    // a = arr;
+    // cout << "Size of a: " << a.size() << endl;
+    // cout << "Capacity of a: " << a.capacity() << endl;
+
+    // for (int i = 0; i < a.size(); i++){
+    //     cout << a[i] << " ";
+    // }
+    // cout << endl;
+
+
+    // // second method to print vector
+    // for (auto i : arr){
+    //     cout << i << " ";
+    // }
+    // cout << endl;
+
+
+
+
+    // --------------------------------------------------------
+
+    // sort the value of vactor arr
+    vector<int>ans;
+    ans.push_back(33);
+    ans.push_back(22);
+    ans.push_back(11);
+    ans.push_back(44);
+    ans.push_back(55);
+
+    // befor sorting the value
+    cout << "Before sorting: " << endl;
+    for (int i = 0; i < ans.size(); i++){
+        cout << ans[i] << " ";
+    }
+    cout << endl;
+    
+    // after sorting the value
+    cout << "After sorting: " << endl;
+    sort(ans.begin(), ans.end()); // sort in accending order
+    for (auto i : ans){
+        cout << i << " ";
+    }
+    cout << endl;
+
+
+    // sort in decresing order
+    sort(ans.begin(), ans.end(), greater<int>());
+
+    // second method to sort decresing order
+    // sort(ans.rbegin(), ans.rend());
+
+    cout << "After sorting in decresing order: " << endl;
+    for (int i = 0; i < ans.size(); i++){
+        cout << ans[i] << " ";
+    }
+    cout << endl;
+ 
+    
 
     return 0;
 }
