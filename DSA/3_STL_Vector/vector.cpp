@@ -28,12 +28,12 @@ int main(){
     // }
     // cout << endl;
 
-    cout << "Size of v1: " << v1.size() << endl;
-    cout << "Capacity of v1: " << v1.capacity() << endl;
+    // cout << "Size of v1: " << v1.size() << endl;
+    // cout << "Capacity of v1: " << v1.capacity() << endl;
 
-    v1.push_back(8);
-    cout << "Size of v1: " << v1.size() << endl;
-    cout << "Capacity of v1: " << v1.capacity() << endl;
+    // v1.push_back(8);
+    // cout << "Size of v1: " << v1.size() << endl;
+    // cout << "Capacity of v1: " << v1.capacity() << endl;
 
     return 0;
 }
