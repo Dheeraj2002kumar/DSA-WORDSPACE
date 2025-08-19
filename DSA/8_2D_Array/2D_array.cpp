@@ -52,6 +52,26 @@ void printMatrixDiagonalSum(int matrix[][3], int row, int col){
     cout << "Second diagonal sum: " << second << endl;
 }
 
+void reverseEachRowMatrix(int matrix[][3], int row, int col){
+    cout << "Reverse each row of Matrix: " << endl;
+
+    for (int i = 0; i < row; i++){
+        int start = 0;
+        int end = col - 1;
+
+        while(start < end){
+            swap(matrix[i][start], matrix[i][end]);
+            start++;
+            end--;
+        }
+
+        for (int j = 0; j < col; j++){
+            cout << matrix[i][j] << " ";
+        }
+        cout << endl;
+    }
+}
+
 int main(){
     // create 2D array
     int arr[3][4] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 };
@@ -118,8 +138,27 @@ int main(){
     // --------------------------------------------
 
     // print sum of matrix diagonal
-    int matrix[3][3] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+    // int matrix[3][3] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
     
-    printMatrixDiagonalSum(matrix, 3, 3);
+    // printMatrixDiagonalSum(matrix, 3, 3);
+
+
+    // ------------------------------------------
+
+    // reverse each row of Matrix
+    int matrixForReverse[3][3] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+
+    // print before reverse
+    cout << "Before reverse: " << endl;
+
+    for (int i = 0; i < 3; i++){
+        for (int j = 0; j < 3; j++){
+            cout << matrixForReverse[i][j] << " ";
+        }
+        cout << endl;
+    }
+    
+    reverseEachRowMatrix(matrixForReverse, 3, 3);
+
     return 0;
 }
