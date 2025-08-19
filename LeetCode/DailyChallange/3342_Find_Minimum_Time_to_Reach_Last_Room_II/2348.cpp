@@ -44,3 +44,45 @@ Constraints:
 
 */
 
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+class Solution {
+public:
+    long long zeroFilledSubarray(vector<int>& nums) {
+        long long result = 0;
+        int n = nums.size();
+        int i = 0;
+        
+        while(i < n){
+            long long l = 0;
+            if (nums[i] == 0){
+                while(i < n && nums[i] == 0){
+                    i++;
+                    l++;
+                }
+            } else{
+                i++;
+            }
+            result += (l)*(l+1)/2;
+        }
+        return result;
+    }
+};
+
+int main() {
+    Solution solution;
+    
+    // Example input
+    vector<int> nums = {0, 0, 1, 0, 0, 0};
+    
+    // Get the result
+    long long result = solution.zeroFilledSubarray(nums);
+    
+    // Output the result
+    cout << "Number of zero-filled subarrays: " << result << endl;
+
+    return 0;
+}
