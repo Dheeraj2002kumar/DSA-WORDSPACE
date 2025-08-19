@@ -28,6 +28,30 @@ void printRowMax(int arr[][4], int row, int col){
     cout << "Index of the row: " << index << endl;
 }
 
+void printMatrixDiagonalSum(int matrix[][3], int row, int col){
+    int first = 0; 
+    int second = 0;
+
+    // first diagonal sum
+    int i = 0;
+    while(i < row){
+        first += matrix[i][i];
+        i++;
+    }
+
+    // second diagonal
+    i = 0;
+    int j = col - 1;
+    while(j >= 0){
+        second += matrix[i][j];
+        i++;
+        j--;
+    }
+
+    cout << "First diagonal sum: " << first << endl;
+    cout << "Second diagonal sum: " << second << endl;
+}
+
 int main(){
     // create 2D array
     int arr[3][4] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 };
@@ -88,7 +112,14 @@ int main(){
     // -------------------------------------------
 
     // print maximum column index and value
-    printRowMax(arr, 3, 4);
+    // printRowMax(arr, 3, 4);
 
+
+    // --------------------------------------------
+
+    // print sum of matrix diagonal
+    int matrix[3][3] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+    
+    printMatrixDiagonalSum(matrix, 3, 3);
     return 0;
 }
