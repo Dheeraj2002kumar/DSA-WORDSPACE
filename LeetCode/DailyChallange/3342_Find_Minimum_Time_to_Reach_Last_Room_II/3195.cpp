@@ -42,7 +42,7 @@ Constraints:
 
 1 <= grid.length, grid[i].length <= 1000
 grid[i][j] is either 0 or 1.
-The input is generated such that there is at least one 1 in grid.
+The input is generated such that there is at least one 1 in grid.   
 */
 
 
