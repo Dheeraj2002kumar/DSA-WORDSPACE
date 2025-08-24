@@ -37,3 +37,36 @@ nums[i] is either 0 or 1.
 
 */
 
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+class Solution {
+public:
+    int longestSubarray(vector<int>& nums) {
+        int left = 0;
+        int right = 0;
+        bool isDeleted = false;
+        int ans = 0;
+
+        while (right < nums.size()) {
+            if (nums[right] == 1) {
+                ans = isDeleted ? max(ans, right - left) : max(ans, right - left + 1);
+            } else {
+                if (isDeleted) {
+                    // Move left past the first 0 in the window
+                    while (nums[left] == 1) {
+                        left++;
+                    }
+                    left++; // skip the 0
+                } else {
+                    isDeleted = true;
+                }
+            }
+            right++;
+        }
+
+        // If no zero was deleted, it means all were 1s, so we must delete one
+        return isDeleted ? ans : ans - 1;
+    }
+};
