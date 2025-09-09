@@ -115,3 +115,27 @@ const p2Strict = null === undefined;
 console.log(p1Loose, p1Strict, p2Loose, p2Strict);
 
 console.log('DONE');
+
+
+
+
+
+
+
+
+import React, { useState } from 'react';
+
+function MyForm() {
+  const [name, setName] = useState('');
+
+  return (
+    <form>
+      <input 
+        type="text" 
+        value={name}
+        onChange={(e) => setName(e.target.value)} 
+      />
+      <p>You typed: {name}</p>
+    </form>
+  );
+}
