@@ -122,20 +122,215 @@ console.log('DONE');
 
 
 
+// Section A - Arrays
 
-import React, { useState } from 'react';
+// 1. Remove Duplicates
 
-function MyForm() {
-  const [name, setName] = useState('');
-
-  return (
-    <form>
-      <input 
-        type="text" 
-        value={name}
-        onChange={(e) => setName(e.target.value)} 
-      />
-      <p>You typed: {name}</p>
-    </form>
-  );
+function removeDuplicates(arr) {
+  const result = [];
+  for (const num of arr) {
+    if (!result.includes(num)) {
+      result.push(num);
+    }
+  }
+  return result;
 }
+
+console.log(removeDuplicates([1, 2, 3, 2, 1, 4]))
+
+
+// 2. Reverse an Array
+function reverseArray(arr) {
+  const reversed = [];
+
+  for (let i = arr.length - 1; i >= 0; i--) {
+    reversed.push(arr[i]);
+  }
+  return reversed;
+}
+
+console.log(reverseArray([10, 20, 30, 40]))
+
+
+
+// 3. Find Second Largest Element 
+function secondLargest(arr) {
+  let max = -Infinity;
+  let secondMax = -Infinity;
+
+  for (const num of arr) {
+    if (num > max) {
+      secondMax = max;
+      max = num;
+    } else if (num > secondMax && num < max) {
+      secondMax = num;
+    }
+  }
+  return secondMax;
+}
+
+console.log(secondLargest([4, 1, 9, 2, 10, 9]))
+
+
+
+// Section B - Objects (Frequency Mapping)
+
+// 4. Character Frequency
+function charFrequency(str) {
+  const freq = {};
+
+  for (const char of str) {
+    freq[char] = (freq[char] || 0) + 1;
+  }
+  return freq;
+}
+
+console.log(charFrequency("programming"));
+
+
+
+// 5. Word Frequency
+function wordFrequency(sentence) {
+  const words = sentnce.split(" ");
+  const freq = {};
+
+  for (const word of words) {
+    freq[word] = (freq[word] || 0) + 1;
+  }
+  return freq;
+}
+
+console.log(wordFrequency("the cat and the dog and the rat"));
+
+
+// 6. Most Frequent element in array
+function mostFrequent(arr) {
+  const freq = {};
+  let maxCount = 0;
+  let mostFreqElem = null;
+
+  for (const num of arr) {
+    freq[num] = (freq[num] || 0) + 1;
+
+    if (freq[num] > maxCount) {
+      maxCount = freq[num];
+      mostFreqElem = num;
+    }
+  }
+  return mostFreqElem;
+}
+
+console.log(mostFrequent([1, 2, 2, 3, 3, 3, 4]));
+
+
+// Section C - Array of Objects(Advanced)
+
+// 7. Group Employees by department
+function groupByDept(employees) {
+  const grouped = {};
+
+  for (const emp of employees) {
+    if (!grouped[emp.dept]) {
+      grouped[emp.dept] = [];
+    }
+    grouped[emp.dept].push(emp.name);
+  }
+  return grouped;
+}
+
+console.log(groupByDept([
+  { name: "Aman", dept: "IT" },
+  { name: "Neha", dept: "HR" },
+  { name: "Ravi", dept: "IT" },
+]));
+
+
+// 8. E-commerce Cart with Discounts
+function calculateFinalBill(cart) {
+  let total = 0;
+  for (const item of cart) {
+    total += item.price * item.qty;
+  }
+
+  if (total >= 1000) {
+    total *= 0.9;
+  }
+
+  total *= 1.05;
+  if (total < 500) {
+    total += 50;
+  }
+  return Math.round(total);
+}
+
+console.log(calculateFinalBill([
+  { name: "Shoes", Price: 500, qty: 2 },
+  { name: "Bag", Price: 300, qty: 1 }
+]));
+
+
+// 9. Merge Duplicate Products
+function mergeDuplicates(cart) {
+  const merged = {};
+
+  for (const item of cart) {
+    if (merged[item.name]) {
+      merged[item.name].qty += 1;
+    } else {
+      merged[item.name] = { ...item, qty: 1 };
+    }
+  }
+  return Object.values(merged);
+}
+
+console.log(mergeDuplicates([
+  { name: "Pen", price: 10 },
+  { name: "Book", price: 50 },
+  { name: "Pen", price: 10 }
+]));
+
+
+
+// 10. Keep Latest Login Record
+function keepLatestLogins(logins) {
+  const latest = {};
+
+  for (const record of logins) {
+    const id = record.id;
+    if (!latest[id] || record.timestamp > latest[id].timestap) {
+      latest[id] = record;
+    }
+  }
+  return Object.values(latest);
+}
+
+
+console.log(keepLatestLogins([
+  { id: 1, username: "Aman", timestamp: 100 },
+  { id: 1, username: "Aman", timestamp: 200 },
+  { id: 2, username: "Neha", timestamp: 150 }
+]))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
